@@ -137,8 +137,9 @@ A `Dockerfile` on `ros:jazzy-ros-base` packages all of it.
   cell, so confidence intervals are wide and stated everywhere.
 * **No pretrained VLA.** The training framework is model-agnostic and fine-tunes with LoRA, but the
   models here are trained from scratch; no OpenVLA / π0 / SmolVLA checkpoint was fine-tuned.
-* The Dockerfile and GitHub Actions workflows were written for this repository but have not been run
-  on GitHub's infrastructure from this machine; the same steps were run locally.
+* CI (lint, type check, unit tests and the ROS 2 end-to-end job) runs on GitHub Actions and passes. The
+  nightly workflow has not fired yet and the Dockerfile has not been built here; their steps were run
+  locally.
 
 ## License
 
