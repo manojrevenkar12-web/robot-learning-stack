@@ -3,8 +3,11 @@
 * runs an exported ONNX policy (or a PyTorch bundle) through the same
   :class:`~rls.learn.runner.ChunkRunner` as the simulation benchmarks;
 * checks every observation for freshness and cross-camera sync before acting,
-  using the per-camera clock models estimated by the data pipeline (camera
-  stamps are on the camera's clock, not the robot's);
+  using the per-camera clock offsets estimated by the data pipeline (camera
+  stamps are on the camera's clock, not the robot's), and tracks how those
+  offsets drift while running: the calibrated offset holds at start-up, and a
+  running median of message age (receive time minus stamp) follows the drift,
+  since transport latency stays roughly constant while the camera clock does not;
 * holds position instead of acting on stale data, and reports inference and
   end-to-end latency, stale ticks and dropped ticks on ``/diagnostics``.
 
@@ -46,6 +49,7 @@ class PolicyNode(Node):
                 ("max_obs_age_s", 0.25),
                 ("max_cam_skew_s", 0.12),
                 ("clock_offsets", "{}"),  # JSON {camera: offset_s}, from the ingest clock model
+                ("track_clock_drift", True),
                 ("summary_path", ""),
                 ("start_enabled", True),
                 ("command_topic", "/joint_command"),  # the skill executor remaps this to /policy/joint_command
@@ -58,6 +62,9 @@ class PolicyNode(Node):
         self.max_age = float(g("max_obs_age_s"))
         self.max_skew = float(g("max_cam_skew_s"))
         self.offsets: dict[str, float] = json.loads(g("clock_offsets"))
+        self.track_drift = bool(g("track_clock_drift"))
+        self.ages: dict[str, list[float]] = {"front": [], "wrist": []}
+        self.age0: dict[str, float] = {}
         self.summary_path = g("summary_path")
         self.enabled = bool(g("start_enabled"))
         reliable = QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
@@ -77,8 +84,23 @@ class PolicyNode(Node):
         self.last_cmd: np.ndarray | None = None
 
     # ------------------------------------------------------------- inputs
+    def clock_offset(self, cam: str, raw_stamp: float) -> float:
+        """Calibrated offset, corrected for drift since start-up (see module docstring)."""
+        off = self.offsets.get(f"cam_{cam}", 0.0)
+        if not self.track_drift:
+            return off
+        ages = self.ages[cam]
+        ages.append(self.get_clock().now().nanoseconds * 1e-9 - raw_stamp)
+        del ages[:-31]
+        if cam not in self.age0:
+            if len(ages) >= 15:
+                self.age0[cam] = float(np.median(ages))
+            return off
+        return off + self.age0[cam] - float(np.median(ages))
+
     def _on_img(self, cam: str, msg: CompressedImage) -> None:
-        stamp = from_time(msg.header.stamp) - self.offsets.get(f"cam_{cam}", 0.0)
+        raw = from_time(msg.header.stamp)
+        stamp = raw - self.clock_offset(cam, raw)
         try:
             img = np.asarray(Image.open(io.BytesIO(bytes(msg.data))).convert("RGB"))
         except Exception:
@@ -138,6 +160,9 @@ class PolicyNode(Node):
 
     def summary(self) -> dict[str, Any]:
         s = dict(self.stats)
+        s["clock_offsets_now"] = {
+            c: round(self.offsets.get(f"cam_{c}", 0.0) + self.age0[c] - float(np.median(a)), 4) for c, a in self.ages.items() if c in self.age0 and a
+        }
         for k in ("e2e_ms", "infer_ms"):
             v = np.array(s.pop(k) or [0.0])
             s[f"{k}_p50"] = float(np.percentile(v, 50))

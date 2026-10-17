@@ -1,0 +1,12 @@
+{
+ "session": "session",
+ "episodes": 10,
+ "variant": "lab",
+ "tasks": "pick_place,stack",
+ "seed_start": 0,
+ "fault_profile": "configs/faults/realistic.yaml",
+ "fault_seed": 0,
+ "operator": "agent",
+ "robot": "franka_panda (MuJoCo Menagerie), simulated",
+ "wall_time_s": 516.9
+}

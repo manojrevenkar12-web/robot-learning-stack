@@ -1,0 +1,712 @@
+[
+ {
+  "episode_index": 0,
+  "instruction": "put the red cube in the bin, then stack the yellow cube on the green cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the red cube in the bin",
+    "result": "success",
+    "ticks": 96,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the green cube",
+    "result": "success",
+    "ticks": 113,
+    "retries": 0
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "red"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "yellow",
+     "support": "green"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.524055959914624,
+    -0.00046730352688810923,
+    0.26700268955595524
+   ],
+   "objects": {
+    "cube_0": [
+     0.45327277431691376,
+     -0.27640295949916877,
+     0.02927269919433795,
+     0.28879819702934445
+    ],
+    "cube_1": [
+     0.45232785217603916,
+     -0.11658862645204623,
+     0.06447509410180957,
+     0.3520448353387991
+    ],
+    "cube_2": [
+     0.44933162403465104,
+     -0.11848332163802414,
+     0.020899303737504607,
+     -0.049640132192080785
+    ]
+   },
+   "bin": [
+    0.4533052696461023,
+    -0.2750671354345175
+   ]
+  }
+ },
+ {
+  "episode_index": 1,
+  "instruction": "put the yellow cube in the bin, then stack the blue cube on the red cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the yellow cube in the bin",
+    "result": "success",
+    "ticks": 108,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the red cube",
+    "result": "success",
+    "ticks": 92,
+    "retries": 0
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "yellow"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "blue",
+     "support": "red"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5228407466885531,
+    -0.00020822209721869462,
+    0.26424111799723876
+   ],
+   "objects": {
+    "cube_0": [
+     0.43940042130592855,
+     -0.28399066057492994,
+     0.028472699194337946,
+     0.11366134954126735
+    ],
+    "cube_1": [
+     0.5593122590142298,
+     -0.08349041370972293,
+     0.06331920582301534,
+     -0.19800526694893217
+    ],
+    "cube_2": [
+     0.558793245380356,
+     -0.085111831297727,
+     0.020270929045571078,
+     -0.152437454061321
+    ]
+   },
+   "bin": [
+    0.45679367499321083,
+    -0.28749716989892515
+   ]
+  }
+ },
+ {
+  "episode_index": 2,
+  "instruction": "put the red cube in the bin, then stack the yellow cube on the blue cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the red cube in the bin",
+    "result": "success",
+    "ticks": 104,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the blue cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the blue cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "red"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "yellow",
+     "support": "blue"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5230745964096037,
+    -0.0002681854612178976,
+    0.26520964672162245
+   ],
+   "objects": {
+    "cube_0": [
+     0.4532188248746347,
+     -0.27666655242289157,
+     0.027672699194338006,
+     0.3831755290875768
+    ],
+    "cube_1": [
+     0.5081077720294386,
+     -0.09113165005219365,
+     0.023838798431985407,
+     0.12222480852645784
+    ],
+    "cube_2": [
+     0.4720268036586306,
+     0.0007661562254614173,
+     0.022138798431985424,
+     -0.2204616675030383
+    ]
+   },
+   "bin": [
+    0.454202415857555,
+    -0.2769448070520807
+   ]
+  }
+ },
+ {
+  "episode_index": 3,
+  "instruction": "put the green cube in the bin, then stack the blue cube on the red cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the green cube in the bin",
+    "result": "success",
+    "ticks": 103,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the red cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the red cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "green"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "blue",
+     "support": "red"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5226553622144036,
+    0.0003444478858528213,
+    0.2643949539252829
+   ],
+   "objects": {
+    "cube_0": [
+     0.4281858242671811,
+     -0.28926664825004256,
+     0.027672699194338,
+     0.35508117439218423
+    ],
+    "cube_1": [
+     0.46599467637846925,
+     0.11965605631233683,
+     0.0228387984319854,
+     1.8884444306579489
+    ],
+    "cube_2": [
+     0.5235255238678684,
+     0.1156410530455262,
+     0.022738798431985396,
+     1.9919210225364377
+    ]
+   },
+   "bin": [
+    0.4455602379039423,
+    -0.28921121208439277
+   ]
+  }
+ },
+ {
+  "episode_index": 4,
+  "instruction": "put the red cube in the bin, then stack the yellow cube on the blue cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the red cube in the bin",
+    "result": "success",
+    "ticks": 117,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the blue cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the blue cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "red"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "yellow",
+     "support": "blue"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.522660399197842,
+    -0.00022805668972817204,
+    0.26473360817736025
+   ],
+   "objects": {
+    "cube_0": [
+     0.43827998677128793,
+     -0.2912643455097855,
+     0.026472699194337992,
+     0.24024891524750575
+    ],
+    "cube_1": [
+     0.4290380501366027,
+     -0.10104729755558937,
+     0.0226387984319854,
+     -1.4612175040780495
+    ],
+    "cube_2": [
+     0.49050704921279925,
+     -0.054027616718976684,
+     0.021038798431985386,
+     0.6540182525867406
+    ]
+   },
+   "bin": [
+    0.4518227885820219,
+    -0.2887692365527654
+   ]
+  }
+ },
+ {
+  "episode_index": 5,
+  "instruction": "put the green cube in the bin, then stack the red cube on the blue cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the green cube in the bin",
+    "result": "success",
+    "ticks": 99,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the red cube on the blue cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the red cube on the blue cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "green"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "red",
+     "support": "blue"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5224406876191401,
+    -0.00018471624114327427,
+    0.2643312369165453
+   ],
+   "objects": {
+    "cube_0": [
+     0.4245116003997117,
+     -0.2709829161038289,
+     0.029572699194337953,
+     -0.16967196454027428
+    ],
+    "cube_1": [
+     0.461188453228287,
+     -0.03476010831639155,
+     0.06302038630619093,
+     0.15660764792000614
+    ],
+    "cube_2": [
+     0.45647557123706295,
+     -0.02956678151487809,
+     0.020177937228389713,
+     0.2903370461548756
+    ]
+   },
+   "bin": [
+    0.4456297169496222,
+    -0.2717617036198377
+   ]
+  }
+ },
+ {
+  "episode_index": 6,
+  "instruction": "put the green cube in the bin, then stack the blue cube on the yellow cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the green cube in the bin",
+    "result": "success",
+    "ticks": 101,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the yellow cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the yellow cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "green"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "blue",
+     "support": "yellow"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5225028353516668,
+    0.0003371943407497475,
+    0.2641412101141364
+   ],
+   "objects": {
+    "cube_0": [
+     0.45507612157980687,
+     -0.28730072001780815,
+     0.02637269919433796,
+     -0.464050908571704
+    ],
+    "cube_1": [
+     0.47666069929629584,
+     0.01457437505849942,
+     0.022238798431985406,
+     -0.6943830132534183
+    ],
+    "cube_2": [
+     0.4827210027957107,
+     0.10807940110066569,
+     0.02103879843198542,
+     3.0419240010986313
+    ]
+   },
+   "bin": [
+    0.4543069857791694,
+    -0.285574904164644
+   ]
+  }
+ },
+ {
+  "episode_index": 7,
+  "instruction": "put the green cube in the bin, then stack the blue cube on the yellow cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the green cube in the bin",
+    "result": "success",
+    "ticks": 96,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the yellow cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the blue cube on the yellow cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "green"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "blue",
+     "support": "yellow"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5230058927452323,
+    5.918376830075092e-06,
+    0.26521514920672795
+   ],
+   "objects": {
+    "cube_0": [
+     0.4538091748003132,
+     -0.279508460970919,
+     0.027772699194337936,
+     -0.3837044037084493
+    ],
+    "cube_1": [
+     0.49811736359770714,
+     -0.01440461306394958,
+     0.021638798431985393,
+     -0.9590072078382106
+    ],
+    "cube_2": [
+     0.5648090820799702,
+     0.16114186641479278,
+     0.02113879843198536,
+     -0.5777856321137624
+    ]
+   },
+   "bin": [
+    0.4592598940113369,
+    -0.2769997693078065
+   ]
+  }
+ },
+ {
+  "episode_index": 8,
+  "instruction": "put the blue cube in the bin, then stack the green cube on the red cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the blue cube in the bin",
+    "result": "success",
+    "ticks": 119,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the green cube on the red cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the green cube on the red cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "blue"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "green",
+     "support": "red"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5226287112930859,
+    0.000332759030416263,
+    0.26449161851999153
+   ],
+   "objects": {
+    "cube_0": [
+     0.4606154014086005,
+     -0.2731302810820614,
+     0.028472699194337966,
+     0.3021563609436061
+    ],
+    "cube_1": [
+     0.3881707550611741,
+     0.08603418474488783,
+     0.0222387984319854,
+     2.099037061930285
+    ],
+    "cube_2": [
+     0.4884123318230065,
+     0.10508114091857473,
+     0.02203879843198539,
+     0.11785228596271323
+    ]
+   },
+   "bin": [
+    0.45313142128239253,
+    -0.2808122377847355
+   ]
+  }
+ },
+ {
+  "episode_index": 9,
+  "instruction": "put the blue cube in the bin, then stack the yellow cube on the green cube",
+  "steps": [
+   {
+    "step": 0,
+    "instruction": "put the blue cube in the bin",
+    "result": "success",
+    "ticks": 104,
+    "retries": 0
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the green cube",
+    "result": "retry"
+   },
+   {
+    "step": 1,
+    "instruction": "stack the yellow cube on the green cube",
+    "result": "failed",
+    "ticks": 240,
+    "retries": 1
+   }
+  ],
+  "planner": "RulePlanner",
+  "plan": [
+   {
+    "skill": "pick_place",
+    "args": {
+     "object": "blue"
+    }
+   },
+   {
+    "skill": "stack",
+    "args": {
+     "object": "yellow",
+     "support": "green"
+    }
+   }
+  ],
+  "final_state": {
+   "ee": [
+    0.5227137617153023,
+    0.0001030768387029696,
+    0.26441884929742465
+   ],
+   "objects": {
+    "cube_0": [
+     0.43466101375419985,
+     -0.2845401131542342,
+     0.028872699194337968,
+     0.5244749678179857
+    ],
+    "cube_1": [
+     0.44156764547263594,
+     0.09064717683404623,
+     0.023238798431985386,
+     0.03555788840205939
+    ],
+    "cube_2": [
+     0.46885678070529013,
+     -0.06960469129988557,
+     0.022738798431985393,
+     0.11242950865151535
+    ]
+   },
+   "bin": [
+    0.4444410302956102,
+    -0.2812043926233392
+   ]
+  }
+ }
+]

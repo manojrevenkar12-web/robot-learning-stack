@@ -1,0 +1,34 @@
+{
+ "split": "in_distribution",
+ "episodes": 20,
+ "success_rate": 0.5,
+ "ci95": [
+  0.2992949144298199,
+  0.7007050855701801
+ ],
+ "failures": {
+  "timeout": 1,
+  "wrong_object": 1,
+  "no_grasp": 4,
+  "misplaced": 3,
+  "dropped": 1
+ },
+ "runtime": {
+  "ticks": 4204,
+  "acted": 4149,
+  "stale": 52,
+  "skewed": 3,
+  "decode_errors": 5,
+  "clock_offsets_now": {
+   "front": 0.0191,
+   "wrist": 0.2992
+  },
+  "e2e_ms_p50": 33.02914799860446,
+  "e2e_ms_p95": 89.38650420168409,
+  "e2e_ms_max": 571.4325040025869,
+  "infer_ms_p50": 25.922412998625077,
+  "infer_ms_p95": 73.68448659981368,
+  "infer_ms_max": 569.2324780029594
+ },
+ "fault_profile": "configs/faults/realistic.yaml"
+}

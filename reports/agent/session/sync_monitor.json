@@ -1,0 +1,11 @@
+{
+  "episodes": 10,
+  "median_wrist_minus_front_s": 0.227349,
+  "streams": {
+    "cam_front": {"received": 5737, "missing": 54, "drop_rate": 0.00932481, "max_gap_s": 0.668708, "median_age_s": 0.0317326, "level": 0},
+    "cam_front_depth": {"received": 5736, "missing": 54, "drop_rate": 0.00932642, "max_gap_s": 0.668708, "median_age_s": 0.031963, "level": 0},
+    "cam_wrist": {"received": 5731, "missing": 55, "drop_rate": 0.0095057, "max_gap_s": 0.665785, "median_age_s": -0.190516, "level": 1},
+    "joint_states": {"received": 46279, "missing": 55, "drop_rate": 0.00118703, "max_gap_s": 0.0166667, "median_age_s": 0.00205832, "level": 0},
+    "wrist_ft": {"received": 46248, "missing": 86, "drop_rate": 0.00185609, "max_gap_s": 0.025, "median_age_s": 0.00205926, "level": 0}
+  }
+}

@@ -16,3 +16,6 @@ mlruns/
 /cpp/*/build/
 /cpp/*/install/
 /reports_studies.log
+/reports_*.log
+/reports/release/*/work/
+/reports/**/session/logs/

@@ -1,0 +1,1051 @@
+{
+ "profile": {
+  "name": "realistic",
+  "streams": {
+   "joint_states": {
+    "rate_hz": 120,
+    "phase_s": 0.0,
+    "latency_s": 0.001,
+    "latency_jitter_s": 0.0,
+    "stamp_offset_s": 0.0,
+    "stamp_drift_ppm": 0.0,
+    "stamp_jitter_s": 0.0,
+    "drop_prob": 0.001,
+    "burst_prob": 0.0,
+    "burst_len": [
+     3,
+     10
+    ],
+    "corrupt_prob": 0.0,
+    "outage_prob": 0.0,
+    "outage_s": [
+     0.5,
+     1.5
+    ]
+   },
+   "wrist_ft": {
+    "rate_hz": 120,
+    "phase_s": 0.0,
+    "latency_s": 0.002,
+    "latency_jitter_s": 0.0,
+    "stamp_offset_s": 0.0,
+    "stamp_drift_ppm": 0.0,
+    "stamp_jitter_s": 0.0,
+    "drop_prob": 0.002,
+    "burst_prob": 0.0,
+    "burst_len": [
+     3,
+     10
+    ],
+    "corrupt_prob": 0.0,
+    "outage_prob": 0.0,
+    "outage_s": [
+     0.5,
+     1.5
+    ]
+   },
+   "cam_front": {
+    "rate_hz": 15,
+    "phase_s": 0.021,
+    "latency_s": 0.03,
+    "latency_jitter_s": 0.005,
+    "stamp_offset_s": 0.0,
+    "stamp_drift_ppm": 0.0,
+    "stamp_jitter_s": 0.002,
+    "drop_prob": 0.004,
+    "burst_prob": 0.2,
+    "burst_len": [
+     3,
+     10
+    ],
+    "corrupt_prob": 0.002,
+    "outage_prob": 0.0,
+    "outage_s": [
+     0.5,
+     1.5
+    ]
+   },
+   "cam_wrist": {
+    "rate_hz": 15,
+    "phase_s": 0.043,
+    "latency_s": 0.045,
+    "latency_jitter_s": 0.008,
+    "stamp_offset_s": 0.12,
+    "stamp_drift_ppm": 600,
+    "stamp_jitter_s": 0.003,
+    "drop_prob": 0.006,
+    "burst_prob": 0.2,
+    "burst_len": [
+     3,
+     10
+    ],
+    "corrupt_prob": 0.003,
+    "outage_prob": 0.0,
+    "outage_s": [
+     0.5,
+     1.5
+    ]
+   },
+   "joint_command": {
+    "rate_hz": 15,
+    "phase_s": 0.0,
+    "latency_s": 0.0,
+    "latency_jitter_s": 0.0,
+    "stamp_offset_s": 0.0,
+    "stamp_drift_ppm": 0.0,
+    "stamp_jitter_s": 0.0,
+    "drop_prob": 0.0,
+    "burst_prob": 0.0,
+    "burst_len": [
+     3,
+     10
+    ],
+    "corrupt_prob": 0.0,
+    "outage_prob": 0.0,
+    "outage_s": [
+     0.5,
+     1.5
+    ]
+   }
+  },
+  "calibration": {
+   "prob": 0.0,
+   "translation_m": 0.03,
+   "rotation_deg": 2.0
+  },
+  "jpeg_quality": 90,
+  "image_noise_std": 2.0
+ },
+ "episodes": [
+  {
+   "episode_index": 0,
+   "t_start": 1.0,
+   "t_end": 18.374972199998723,
+   "spec_seed": 950000,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.45327277431691376,
+     -0.27640295949916877,
+     0.02927269919433795
+    ],
+    "max_target_height": 0.15413636388461233,
+    "distractor_moved": 0.1892992000337274,
+    "max_contact_force": 2.484314027246827,
+    "steps": 260
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 2085,
+     "dropped": 7,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 2085,
+     "dropped": 5,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 261,
+     "dropped": 1,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 260,
+     "dropped": 0,
+     "corrupted": 0,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.524055959914624,
+     -0.00046730352688810923,
+     0.26700268955595524
+    ],
+    "objects": {
+     "cube_0": [
+      0.45327277431691376,
+      -0.27640295949916877,
+      0.02927269919433795,
+      0.28879819702934445
+     ],
+     "cube_1": [
+      0.45232785217603916,
+      -0.11658862645204623,
+      0.06447509410180957,
+      0.3520448353387991
+     ],
+     "cube_2": [
+      0.44933162403465104,
+      -0.11848332163802414,
+      0.020899303737504607,
+      -0.049640132192080785
+     ]
+    },
+    "bin": [
+     0.4533052696461023,
+     -0.2750671354345175
+    ]
+   },
+   "instruction": "put the red cube in the bin, then stack the yellow cube on the green cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "red"
+     ],
+     [
+      "stack",
+      "yellow",
+      "green"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 1,
+   "t_start": 19.374972199998723,
+   "t_end": 36.14994535999705,
+   "spec_seed": 950001,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.43940042130592855,
+     -0.28399066057492994,
+     0.028472699194337946
+    ],
+    "max_target_height": 0.1491925126276519,
+    "distractor_moved": 0.11768939574297214,
+    "max_contact_force": 4.91771629466279,
+    "steps": 251
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 2013,
+     "dropped": 2,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 2013,
+     "dropped": 3,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 252,
+     "dropped": 1,
+     "corrupted": 1,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 251,
+     "dropped": 2,
+     "corrupted": 1,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5228407466885531,
+     -0.00020822209721869462,
+     0.26424111799723876
+    ],
+    "objects": {
+     "cube_0": [
+      0.43940042130592855,
+      -0.28399066057492994,
+      0.028472699194337946,
+      0.11366134954126735
+     ],
+     "cube_1": [
+      0.5593122590142298,
+      -0.08349041370972293,
+      0.06331920582301534,
+      -0.19800526694893217
+     ],
+     "cube_2": [
+      0.558793245380356,
+      -0.085111831297727,
+      0.020270929045571078,
+      -0.152437454061321
+     ]
+    },
+    "bin": [
+     0.45679367499321083,
+     -0.28749716989892515
+    ]
+   },
+   "instruction": "put the yellow cube in the bin, then stack the blue cube on the red cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "yellow"
+     ],
+     [
+      "stack",
+      "blue",
+      "red"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 2,
+   "t_start": 37.14994535999705,
+   "t_end": 81.05820843999307,
+   "spec_seed": 950002,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.4532188248746347,
+     -0.27666655242289157,
+     0.027672699194338006
+    ],
+    "max_target_height": 0.147779674644105,
+    "distractor_moved": 0.046652056359310246,
+    "max_contact_force": 0.0,
+    "steps": 658
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5269,
+     "dropped": 7,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5269,
+     "dropped": 8,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 659,
+     "dropped": 2,
+     "corrupted": 2,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 658,
+     "dropped": 6,
+     "corrupted": 3,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5230745964096037,
+     -0.0002681854612178976,
+     0.26520964672162245
+    ],
+    "objects": {
+     "cube_0": [
+      0.4532188248746347,
+      -0.27666655242289157,
+      0.027672699194338006,
+      0.3831755290875768
+     ],
+     "cube_1": [
+      0.5081077720294386,
+      -0.09113165005219365,
+      0.023838798431985407,
+      0.12222480852645784
+     ],
+     "cube_2": [
+      0.4720268036586306,
+      0.0007661562254614173,
+      0.022138798431985424,
+      -0.2204616675030383
+     ]
+    },
+    "bin": [
+     0.454202415857555,
+     -0.2769448070520807
+    ]
+   },
+   "instruction": "put the red cube in the bin, then stack the yellow cube on the blue cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "red"
+     ],
+     [
+      "stack",
+      "yellow",
+      "blue"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 3,
+   "t_start": 82.05820843999307,
+   "t_end": 125.89980495998915,
+   "spec_seed": 950003,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.4281858242671811,
+     -0.28926664825004256,
+     0.027672699194338
+    ],
+    "max_target_height": 0.15350578409556032,
+    "distractor_moved": 0.22951037471233673,
+    "max_contact_force": 15.449569541861823,
+    "steps": 657
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5261,
+     "dropped": 8,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5261,
+     "dropped": 18,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 658,
+     "dropped": 2,
+     "corrupted": 1,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 657,
+     "dropped": 1,
+     "corrupted": 2,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5226553622144036,
+     0.0003444478858528213,
+     0.2643949539252829
+    ],
+    "objects": {
+     "cube_0": [
+      0.4281858242671811,
+      -0.28926664825004256,
+      0.027672699194338,
+      0.35508117439218423
+     ],
+     "cube_1": [
+      0.46599467637846925,
+      0.11965605631233683,
+      0.0228387984319854,
+      1.8884444306579489
+     ],
+     "cube_2": [
+      0.5235255238678684,
+      0.1156410530455262,
+      0.022738798431985396,
+      1.9919210225364377
+     ]
+    },
+    "bin": [
+     0.4455602379039423,
+     -0.28921121208439277
+    ]
+   },
+   "instruction": "put the green cube in the bin, then stack the blue cube on the red cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "green"
+     ],
+     [
+      "stack",
+      "blue",
+      "red"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 4,
+   "t_start": 126.89980495998915,
+   "t_end": 171.67473331998428,
+   "spec_seed": 950004,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.43827998677128793,
+     -0.2912643455097855,
+     0.026472699194337992
+    ],
+    "max_target_height": 0.15374720919099782,
+    "distractor_moved": 0.13486597194181746,
+    "max_contact_force": 0.0,
+    "steps": 671
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5373,
+     "dropped": 8,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5373,
+     "dropped": 12,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 672,
+     "dropped": 6,
+     "corrupted": 3,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 671,
+     "dropped": 9,
+     "corrupted": 3,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.522660399197842,
+     -0.00022805668972817204,
+     0.26473360817736025
+    ],
+    "objects": {
+     "cube_0": [
+      0.43827998677128793,
+      -0.2912643455097855,
+      0.026472699194337992,
+      0.24024891524750575
+     ],
+     "cube_1": [
+      0.4290380501366027,
+      -0.10104729755558937,
+      0.0226387984319854,
+      -1.4612175040780495
+     ],
+     "cube_2": [
+      0.49050704921279925,
+      -0.054027616718976684,
+      0.021038798431985386,
+      0.6540182525867406
+     ]
+    },
+    "bin": [
+     0.4518227885820219,
+     -0.2887692365527654
+    ]
+   },
+   "instruction": "put the red cube in the bin, then stack the yellow cube on the blue cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "red"
+     ],
+     [
+      "stack",
+      "yellow",
+      "blue"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 5,
+   "t_start": 172.67473331998428,
+   "t_end": 216.24966359998064,
+   "spec_seed": 950005,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.4245116003997117,
+     -0.2709829161038289,
+     0.029572699194337953
+    ],
+    "max_target_height": 0.15040470142059015,
+    "distractor_moved": 0.13271572286351888,
+    "max_contact_force": 0.0,
+    "steps": 653
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5229,
+     "dropped": 4,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5229,
+     "dropped": 14,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 654,
+     "dropped": 16,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 653,
+     "dropped": 1,
+     "corrupted": 4,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5224406876191401,
+     -0.00018471624114327427,
+     0.2643312369165453
+    ],
+    "objects": {
+     "cube_0": [
+      0.4245116003997117,
+      -0.2709829161038289,
+      0.029572699194337953,
+      -0.16967196454027428
+     ],
+     "cube_1": [
+      0.461188453228287,
+      -0.03476010831639155,
+      0.06302038630619093,
+      0.15660764792000614
+     ],
+     "cube_2": [
+      0.45647557123706295,
+      -0.02956678151487809,
+      0.020177937228389713,
+      0.2903370461548756
+     ]
+    },
+    "bin": [
+     0.4456297169496222,
+     -0.2717617036198377
+    ]
+   },
+   "instruction": "put the green cube in the bin, then stack the red cube on the blue cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "green"
+     ],
+     [
+      "stack",
+      "red",
+      "blue"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 6,
+   "t_start": 217.24966359998064,
+   "t_end": 260.95792699997685,
+   "spec_seed": 950006,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.45507612157980687,
+     -0.28730072001780815,
+     0.02637269919433796
+    ],
+    "max_target_height": 0.14652821795126375,
+    "distractor_moved": 0.08874671416129563,
+    "max_contact_force": 5.789727564427467,
+    "steps": 655
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5245,
+     "dropped": 4,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5245,
+     "dropped": 7,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 656,
+     "dropped": 18,
+     "corrupted": 1,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 655,
+     "dropped": 10,
+     "corrupted": 3,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5225028353516668,
+     0.0003371943407497475,
+     0.2641412101141364
+    ],
+    "objects": {
+     "cube_0": [
+      0.45507612157980687,
+      -0.28730072001780815,
+      0.02637269919433796,
+      -0.464050908571704
+     ],
+     "cube_1": [
+      0.47666069929629584,
+      0.01457437505849942,
+      0.022238798431985406,
+      -0.6943830132534183
+     ],
+     "cube_2": [
+      0.4827210027957107,
+      0.10807940110066569,
+      0.02103879843198542,
+      3.0419240010986313
+     ]
+    },
+    "bin": [
+     0.4543069857791694,
+     -0.285574904164644
+    ]
+   },
+   "instruction": "put the green cube in the bin, then stack the blue cube on the yellow cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "green"
+     ],
+     [
+      "stack",
+      "blue",
+      "yellow"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 7,
+   "t_start": 261.95792699997685,
+   "t_end": 305.3328575999734,
+   "spec_seed": 950007,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.4538091748003132,
+     -0.279508460970919,
+     0.027772699194337936
+    ],
+    "max_target_height": 0.1512354074103738,
+    "distractor_moved": 0.10105856560374515,
+    "max_contact_force": 18.318590561206506,
+    "steps": 650
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5205,
+     "dropped": 5,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5205,
+     "dropped": 7,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 651,
+     "dropped": 3,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 650,
+     "dropped": 13,
+     "corrupted": 0,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5230058927452323,
+     5.918376830075092e-06,
+     0.26521514920672795
+    ],
+    "objects": {
+     "cube_0": [
+      0.4538091748003132,
+      -0.279508460970919,
+      0.027772699194337936,
+      -0.3837044037084493
+     ],
+     "cube_1": [
+      0.49811736359770714,
+      -0.01440461306394958,
+      0.021638798431985393,
+      -0.9590072078382106
+     ],
+     "cube_2": [
+      0.5648090820799702,
+      0.16114186641479278,
+      0.02113879843198536,
+      -0.5777856321137624
+     ]
+    },
+    "bin": [
+     0.4592598940113369,
+     -0.2769997693078065
+    ]
+   },
+   "instruction": "put the green cube in the bin, then stack the blue cube on the yellow cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "green"
+     ],
+     [
+      "stack",
+      "blue",
+      "yellow"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 8,
+   "t_start": 306.3328575999734,
+   "t_end": 351.24111907996837,
+   "spec_seed": 950008,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.4606154014086005,
+     -0.2731302810820614,
+     0.028472699194337966
+    ],
+    "max_target_height": 0.1400805246241757,
+    "distractor_moved": 0.08499263312938032,
+    "max_contact_force": 0.0,
+    "steps": 673
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5389,
+     "dropped": 6,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5389,
+     "dropped": 5,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 674,
+     "dropped": 4,
+     "corrupted": 3,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 673,
+     "dropped": 10,
+     "corrupted": 4,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5226287112930859,
+     0.000332759030416263,
+     0.26449161851999153
+    ],
+    "objects": {
+     "cube_0": [
+      0.4606154014086005,
+      -0.2731302810820614,
+      0.028472699194337966,
+      0.3021563609436061
+     ],
+     "cube_1": [
+      0.3881707550611741,
+      0.08603418474488783,
+      0.0222387984319854,
+      2.099037061930285
+     ],
+     "cube_2": [
+      0.4884123318230065,
+      0.10508114091857473,
+      0.02203879843198539,
+      0.11785228596271323
+     ]
+    },
+    "bin": [
+     0.45313142128239253,
+     -0.2808122377847355
+    ]
+   },
+   "instruction": "put the blue cube in the bin, then stack the green cube on the red cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "blue"
+     ],
+     [
+      "stack",
+      "green",
+      "red"
+     ]
+    ]
+   }
+  },
+  {
+   "episode_index": 9,
+   "t_start": 352.24111907996837,
+   "t_end": 396.1493821599644,
+   "spec_seed": 950009,
+   "task": "pick_place",
+   "outcome": {
+    "success": true,
+    "failure_mode": "success",
+    "target_final": [
+     0.43466101375419985,
+     -0.2845401131542342,
+     0.028872699194337968
+    ],
+    "max_target_height": 0.15586046693906525,
+    "distractor_moved": 4.115540405703392e-08,
+    "max_contact_force": 8.996329688153727,
+    "steps": 658
+   },
+   "calibration_error": null,
+   "stream_events": {
+    "joint_states": {
+     "captured": 5269,
+     "dropped": 4,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "wrist_ft": {
+     "captured": 5269,
+     "dropped": 7,
+     "corrupted": 0,
+     "outage_dropped": 0
+    },
+    "cam_front": {
+     "captured": 659,
+     "dropped": 1,
+     "corrupted": 3,
+     "outage_dropped": 0
+    },
+    "cam_wrist": {
+     "captured": 658,
+     "dropped": 3,
+     "corrupted": 4,
+     "outage_dropped": 0
+    }
+   },
+   "outages": {},
+   "final_state": {
+    "ee": [
+     0.5227137617153023,
+     0.0001030768387029696,
+     0.26441884929742465
+    ],
+    "objects": {
+     "cube_0": [
+      0.43466101375419985,
+      -0.2845401131542342,
+      0.028872699194337968,
+      0.5244749678179857
+     ],
+     "cube_1": [
+      0.44156764547263594,
+      0.09064717683404623,
+      0.023238798431985386,
+      0.03555788840205939
+     ],
+     "cube_2": [
+      0.46885678070529013,
+      -0.06960469129988557,
+      0.022738798431985393,
+      0.11242950865151535
+     ]
+    },
+    "bin": [
+     0.4444410302956102,
+     -0.2812043926233392
+    ]
+   },
+   "instruction": "put the blue cube in the bin, then stack the yellow cube on the green cube",
+   "extra": {
+    "steps": [
+     [
+      "pick_place",
+      "blue"
+     ],
+     [
+      "stack",
+      "yellow",
+      "green"
+     ]
+    ]
+   }
+  }
+ ]
+}
