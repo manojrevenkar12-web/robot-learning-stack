@@ -1,0 +1,18 @@
+# generated data, runs and heavy reports (rebuild with scripts/build_dataset.py, scripts/run_studies.py)
+/data
+/runs
+/reports/**/videos/
+/reports/studies/logs/
+*.onnx
+*.mcap
+*.h5
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+mlruns/
+/cpp/*/build/
+/cpp/*/install/
+/reports_studies.log

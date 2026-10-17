@@ -1,0 +1,101 @@
+{
+ "camera": "front",
+ "resolution": [
+  160,
+  120
+ ],
+ "episodes": 12,
+ "frames": 1361,
+ "results": [
+  {
+   "setting": "raw (uncompressed)",
+   "bytes_per_frame": 57600,
+   "ratio_vs_raw": 1.0,
+   "psnr_mean_db": null,
+   "psnr_p1_db": null,
+   "encode_fps": null,
+   "decode_fps": null,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "JPEG quality 90 per frame (as in the bags)",
+   "bytes_per_frame": 4067,
+   "ratio_vs_raw": 14.2,
+   "psnr_mean_db": 50.06,
+   "psnr_p1_db": 48.09,
+   "encode_fps": 5264,
+   "decode_fps": 3779,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "FFV1 lossless",
+   "bytes_per_frame": 12704,
+   "ratio_vs_raw": 4.5,
+   "psnr_mean_db": 99.0,
+   "psnr_p1_db": 99.0,
+   "encode_fps": 803,
+   "decode_fps": 821,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "H.264 CRF 23",
+   "bytes_per_frame": 266,
+   "ratio_vs_raw": 216.5,
+   "psnr_mean_db": 37.73,
+   "psnr_p1_db": 36.47,
+   "encode_fps": 575,
+   "decode_fps": 4222,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "H.264 CRF 30",
+   "bytes_per_frame": 122,
+   "ratio_vs_raw": 470.8,
+   "psnr_mean_db": 34.68,
+   "psnr_p1_db": 33.4,
+   "encode_fps": 751,
+   "decode_fps": 4550,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "H.264 CRF 23, GOP 2",
+   "bytes_per_frame": 837,
+   "ratio_vs_raw": 68.8,
+   "psnr_mean_db": 37.76,
+   "psnr_p1_db": 36.03,
+   "encode_fps": 761,
+   "decode_fps": 2713,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "HEVC CRF 28",
+   "bytes_per_frame": 172,
+   "ratio_vs_raw": 334.0,
+   "psnr_mean_db": 35.8,
+   "psnr_p1_db": 33.51,
+   "encode_fps": 413,
+   "decode_fps": 3840,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "AV1 CRF 30, GOP 2 (release setting)",
+   "bytes_per_frame": 829,
+   "ratio_vs_raw": 69.5,
+   "psnr_mean_db": 38.77,
+   "psnr_p1_db": 36.58,
+   "encode_fps": 487,
+   "decode_fps": 4620,
+   "frame_count_exact": true
+  },
+  {
+   "setting": "AV1 CRF 40, GOP 2",
+   "bytes_per_frame": 560,
+   "ratio_vs_raw": 102.9,
+   "psnr_mean_db": 37.0,
+   "psnr_p1_db": 34.15,
+   "encode_fps": 545,
+   "decode_fps": 5036,
+   "frame_count_exact": true
+  }
+ ]
+}

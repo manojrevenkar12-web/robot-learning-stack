@@ -1,0 +1,238 @@
+{
+ "data_health": {
+  "sessions": 21,
+  "episodes": 252,
+  "health_status": {
+   "ok": 81,
+   "warn": 118,
+   "fail": 53
+  },
+  "drop_rate_abs_error": {
+   "cam_front": {
+    "median": 0.0,
+    "max": 0.0103
+   },
+   "cam_wrist": {
+    "median": 0.0,
+    "max": 0.0098
+   }
+  },
+  "corrupt_frames": {
+   "injected": 241,
+   "detected": 239
+  },
+  "clock_offset_error_ms": {
+   "median": 6.969,
+   "p90": 9.3395,
+   "max": 11.0137
+  },
+  "wrist_drift_error_ppm": {
+   "median": 66.4307,
+   "max": 1500.0
+  },
+  "wrist_clocks": [
+   {
+    "session": "session_000",
+    "est_ms": 161.6,
+    "true_ms": 152.5,
+    "est_ppm": 599,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_000_rerecorded",
+    "est_ms": 163.5,
+    "true_ms": 152.5,
+    "est_ppm": 600,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_001",
+    "est_ms": 151.3,
+    "true_ms": 151.6,
+    "est_ppm": 624,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_002",
+    "est_ms": 160.8,
+    "true_ms": 152.2,
+    "est_ppm": 588,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_003",
+    "est_ms": 160.7,
+    "true_ms": 152.7,
+    "est_ppm": 476,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_004",
+    "est_ms": 161.2,
+    "true_ms": 151.1,
+    "est_ppm": 550,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_005",
+    "est_ms": 155.2,
+    "true_ms": 151.0,
+    "est_ppm": 534,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_006",
+    "est_ms": 162.5,
+    "true_ms": 158.3,
+    "est_ppm": 562,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_007",
+    "est_ms": 163.2,
+    "true_ms": 153.7,
+    "est_ppm": 662,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_008",
+    "est_ms": 154.7,
+    "true_ms": 149.8,
+    "est_ppm": 722,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_009",
+    "est_ms": 155.5,
+    "true_ms": 154.6,
+    "est_ppm": 658,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_010",
+    "est_ms": 155.7,
+    "true_ms": 152.4,
+    "est_ppm": 698,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_011",
+    "est_ms": 158.1,
+    "true_ms": 152.0,
+    "est_ppm": 528,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_012",
+    "est_ms": 159.6,
+    "true_ms": 152.7,
+    "est_ppm": 696,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_013",
+    "est_ms": 158.4,
+    "true_ms": 152.9,
+    "est_ppm": 657,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_014",
+    "est_ms": 158.2,
+    "true_ms": 151.8,
+    "est_ppm": 753,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_015",
+    "est_ms": 159.7,
+    "true_ms": 152.7,
+    "est_ppm": 513,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_016",
+    "est_ms": 156.3,
+    "true_ms": 149.7,
+    "est_ppm": 488,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "session_017",
+    "est_ms": 156.6,
+    "true_ms": 152.7,
+    "est_ppm": 577,
+    "true_ppm": 600,
+    "reliable": true
+   },
+   {
+    "session": "stress_000",
+    "est_ms": -271.3,
+    "true_ms": -260.6,
+    "est_ppm": 0,
+    "true_ppm": -1500,
+    "reliable": false
+   },
+   {
+    "session": "stress_001",
+    "est_ms": -252.2,
+    "true_ms": -260.7,
+    "est_ppm": -1397,
+    "true_ppm": -1500,
+    "reliable": true
+   }
+  ],
+  "extrinsics": {
+   "tp": 6,
+   "fn": 1,
+   "fp": 6,
+   "tn": 239
+  },
+  "live_monitor_drop_rate_abs_error": {
+   "joint_states": {
+    "median": 0.0,
+    "max": 0.0002
+   },
+   "wrist_ft": {
+    "median": 0.0,
+    "max": 0.0004
+   },
+   "cam_front": {
+    "median": 0.0,
+    "max": 0.0155
+   },
+   "cam_wrist": {
+    "median": 0.0,
+    "max": 0.0165
+   }
+  }
+ },
+ "curation": null,
+ "release": null,
+ "runs": {},
+ "onnx": {},
+ "benchmarks": {},
+ "rl": null,
+ "codec": null,
+ "deploy": null,
+ "agent": null,
+ "release_check": null
+}

@@ -1,0 +1,10 @@
+# Policy-class study: diffusion head (x0 prediction, cosine schedule, 10-step DDIM) on the same encoder,
+# recipe and data, same 1500 steps.
+run_name: diffusion_chunk
+dataset: data/release/rls_panda
+policy: diffusion_transformer
+policy_config: {chunk: 20, train_steps: 100, infer_steps: 10, action_space: ee, augment_shift: 2, aux_object_weight: 1.0, state_noise: 0.1, state_dropout: 0.3, film: true}
+steps: 1500
+batch_size: 32
+eval_every: 250
+threads: 1

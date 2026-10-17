@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robot Learning Stack</title>
+<style>
+  :root {
+    --bg: #f6f6f4; --panel: #ffffff; --ink: #18181b; --muted: #6b6b70; --line: #e2e2de;
+    --accent: #2a78d6; --ok: #0f8a3c; --warn: #b26b00; --fail: #c0362c;
+    --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121214; --panel: #1b1b1e; --ink: #ececec; --muted: #9a9aa0; --line: #2c2c31; --accent: #4f94e8; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; background: var(--bg); color: var(--ink); }
+  header { display: flex; align-items: baseline; gap: 24px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 2; }
+  header h1 { font-size: 16px; margin: 0; letter-spacing: .2px; }
+  nav button { background: none; border: 0; color: var(--muted); font: inherit; padding: 4px 0; margin-right: 18px; cursor: pointer; border-bottom: 2px solid transparent; }
+  nav button.on { color: var(--ink); border-color: var(--accent); }
+  main { padding: 18px 20px; max-width: 1400px; margin: 0 auto; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .card .k { color: var(--muted); font-size: 12px; } .card .v { font-size: 22px; font-variant-numeric: tabular-nums; }
+  .split { display: grid; grid-template-columns: minmax(380px, 44%) 1fr; gap: 16px; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; position: sticky; top: 0; background: var(--panel); }
+  tr.sel td { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  tbody tr { cursor: pointer; }
+  .pill { display: inline-block; padding: 0 7px; border-radius: 10px; font-size: 12px; border: 1px solid currentColor; }
+  .ok { color: var(--ok); } .warn { color: var(--warn); } .fail { color: var(--fail); } .muted { color: var(--muted); }
+  .filters { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  select, input { font: inherit; padding: 3px 6px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; }
+  .frames { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+  .frames img { image-rendering: pixelated; border-radius: 4px; border: 1px solid var(--line); max-width: 100%; }
+  svg.chart { width: 100%; height: 150px; display: block; }
+  .chart-title { color: var(--muted); font-size: 12px; margin: 10px 0 2px; }
+  code { font-family: var(--mono); font-size: 12px; }
+  h2 { font-size: 15px; margin: 4px 0 10px; }
+  .bar { height: 8px; background: var(--accent); border-radius: 2px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Robot Learning Stack</h1>
+  <nav><button data-tab="data" class="on">Data</button><button data-tab="runs">Training</button><button data-tab="bench">Benchmarks</button></nav>
+</header>
+<main>
+  <section id="data">
+    <div class="cards" id="data-cards"></div>
+    <div class="split">
+      <div class="panel" style="max-height: 78vh">
+        <div class="filters">
+          <select id="f-source"><option value="">all sources</option></select>
+          <select id="f-status"><option value="">all</option><option value="kept">kept</option><option value="dropped">dropped</option></select>
+          <select id="f-health"><option value="">any health</option><option>ok</option><option>warn</option><option>fail</option></select>
+          <input id="f-text" placeholder="search id / instruction">
+        </div>
+        <table><thead><tr><th>episode</th><th>source</th><th>health</th><th>outcome</th><th>len</th><th>curation</th></tr></thead><tbody id="ep-rows"></tbody></table>
+      </div>
+      <div class="panel" id="ep-detail"><p class="muted">Select an episode.</p></div>
+    </div>
+  </section>
+  <section id="runs" hidden>
+    <div class="panel"><table><thead><tr><th>run</th><th>fine-tune</th><th>episodes</th><th>trainable params</th><th>best val loss</th><th>time</th><th>dataset</th></tr></thead><tbody id="run-rows"></tbody></table></div>
+    <div class="panel" style="margin-top: 14px"><h2 id="run-title">Loss</h2><svg class="chart" id="run-chart" viewBox="0 0 800 220" preserveAspectRatio="none" style="height: 240px"></svg></div>
+  </section>
+  <section id="bench" hidden><div id="bench-list"></div></section>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const j = (u) => fetch(u).then((r) => r.json());
+const pct = (x) => (x == null || isNaN(x)) ? "–" : Math.round(100 * x) + "%";
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+document.querySelectorAll("nav button").forEach((b) => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach((x) => x.classList.toggle("on", x === b));
+  document.querySelectorAll("main section").forEach((s) => s.hidden = s.id !== b.dataset.tab);
+});
+const COLORS = ["#2a78d6", "#e8743b", "#19a979", "#945ecf", "#d64e9a", "#13a4b4", "#a5a524", "#6c757d"];
+
+function lines(svg, series, opts = {}) {
+  const W = 800, H = opts.h || 150, pad = 6;
+  const all = series.flatMap((s) => s.values).filter((v) => isFinite(v));
+  const lo = Math.min(...all), hi = Math.max(...all), span = hi - lo || 1;
+  const n = Math.max(...series.map((s) => s.values.length));
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  let out = "";
+  series.forEach((s, i) => {
+    const pts = s.values.map((v, k) => isFinite(v) ? `${(pad + (W - 2 * pad) * k / Math.max(1, n - 1)).toFixed(1)},${(H - pad - (H - 2 * pad) * (v - lo) / span).toFixed(1)}` : null).filter(Boolean);
+    out += `<polyline fill="none" stroke="${s.color || COLORS[i % COLORS.length]}" stroke-width="${s.width || 1.4}" ${s.dash ? 'stroke-dasharray="5 4"' : ""} points="${pts.join(" ")}"/>`;
+  });
+  if (opts.marker != null) out += `<line x1="${pad + (W - 2 * pad) * opts.marker}" x2="${pad + (W - 2 * pad) * opts.marker}" y1="0" y2="${H}" stroke="currentColor" stroke-opacity=".35"/>`;
+  svg.innerHTML = out;
+}
+
+let EPS = [];
+async function loadData() {
+  const s = await j("/api/summary");
+  const c = s.curation || {};
+  const cards = [["episodes scanned", c.scanned], ["kept", c.kept], ["frames", c.frames], ["dataset", c.version], ["release", s.release ? s.release.lerobot_codebase_version : "–"]];
+  Object.entries(c.dropped_by_reason || {}).forEach(([k, v]) => cards.push(["dropped: " + k, v]));
+  $("#data-cards").innerHTML = cards.map(([k, v]) => `<div class="card"><div class="k">${esc(k)}</div><div class="v">${esc(v ?? "–")}</div></div>`).join("");
+  EPS = await j("/api/episodes");
+  [...new Set(EPS.map((e) => e.source))].forEach((s) => $("#f-source").insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
+  renderRows();
+}
+function renderRows() {
+  const src = $("#f-source").value, st = $("#f-status").value, h = $("#f-health").value, q = $("#f-text").value.toLowerCase();
+  const rows = EPS.filter((e) => (!src || e.source === src) && (!h || e.health === h) && (!st || (st === "kept") === !e.drop_reason) && (!q || (e.episode_id + " " + e.instruction).toLowerCase().includes(q)));
+  $("#ep-rows").innerHTML = rows.slice(0, 800).map((e) => `<tr data-id="${esc(e.episode_id)}"><td><code>${esc(e.episode_id)}</code></td><td>${esc(e.source)}</td><td><span class="pill ${esc(e.health === "pass" ? "ok" : e.health)}">${esc(e.health)}</span></td><td class="${e.success ? "ok" : "fail"}">${esc(e.failure_mode)}</td><td>${e.length}</td><td class="muted">${e.drop_reason ? esc(e.drop_reason) : esc(e.split || "kept")}</td></tr>`).join("");
+  document.querySelectorAll("#ep-rows tr").forEach((tr) => tr.onclick = () => { document.querySelectorAll("#ep-rows tr").forEach((x) => x.classList.remove("sel")); tr.classList.add("sel"); showEpisode(tr.dataset.id); });
+}
+["#f-source", "#f-status", "#f-health", "#f-text"].forEach((s) => $(s).oninput = renderRows);
+
+async function showEpisode(id) {
+  const e = await j(`/api/episode/${encodeURIComponent(id)}`);
+  const checks = Object.entries((e.quality || {}).checks || {});
+  $("#ep-detail").innerHTML = `
+    <h2><code>${esc(e.episode_id)}</code> <span class="muted">· ${esc(e.source)} · ${e.length} frames @ ${e.fps} Hz</span></h2>
+    <p>${esc(e.instruction)} → <b class="${e.outcome.success ? "ok" : "fail"}">${esc(e.outcome.failure_mode)}</b></p>
+    <div class="frames"><img id="im-front" alt="front camera"><img id="im-wrist" alt="wrist camera"></div>
+    <input id="scrub" type="range" min="0" max="${e.length - 1}" value="0" style="width: 100%">
+    <div class="chart-title">joint positions (rad) · solid = state, dashed = command; markers = repaired frames</div><svg class="chart" id="ch-joints"></svg>
+    <div class="chart-title">gripper (state solid, command dashed) and wrist force |F| (N, grey)</div><svg class="chart" id="ch-grip"></svg>
+    <h2 style="margin-top: 12px">Health checks</h2>
+    <table>${checks.map(([k, c]) => `<tr><td>${esc(k)}</td><td><span class="pill ${esc(c.status)}">${esc(c.status)}</span></td><td><code>${esc(JSON.stringify(c.value))}</code></td><td class="muted">${esc(c.detail)}</td></tr>`).join("") || "<tr><td class='muted'>no checks (synthetic)</td></tr>"}</table>`;
+  const draw = (k) => {
+    $("#im-front").src = `/api/episode/${encodeURIComponent(id)}/frame/${k}.jpg?cam=front`;
+    $("#im-wrist").src = `/api/episode/${encodeURIComponent(id)}/frame/${k}.jpg?cam=wrist`;
+    const m = k / Math.max(1, e.length - 1);
+    const js = []; for (let d = 0; d < 7; d++) { js.push({ values: e.state.map((r) => r[d]), color: COLORS[d] }); js.push({ values: e.action.map((r) => r[d]), color: COLORS[d], dash: true, width: 1 }); }
+    lines($("#ch-joints"), js, { marker: m });
+    const f = e.wrench.map((r) => Math.hypot(r[0], r[1], r[2]));
+    const fmax = Math.max(...f) || 1;
+    lines($("#ch-grip"), [{ values: e.state.map((r) => r[7]) }, { values: e.action.map((r) => r[7]), dash: true }, { values: f.map((v) => v / fmax), color: "#999", width: 1 }], { marker: m });
+  };
+  $("#scrub").oninput = (ev) => draw(+ev.target.value);
+  draw(0);
+}
+
+async function loadRuns() {
+  const runs = await j("/api/runs");
+  $("#run-rows").innerHTML = runs.map((r) => `<tr data-n="${esc(r.run_name)}"><td><code>${esc(r.run_name)}</code></td><td>${esc(r.finetune)}</td><td>${r.train_episodes}</td><td>${r.params ? (r.params.trainable / 1e6).toFixed(2) + " M" : ""}</td><td>${(+r.best_val_loss).toFixed(4)}</td><td>${Math.round((r.train_seconds || 0) / 60)} min</td><td><code>${esc(r.dataset_version)}</code></td></tr>`).join("");
+  document.querySelectorAll("#run-rows tr").forEach((tr) => tr.onclick = async () => {
+    document.querySelectorAll("#run-rows tr").forEach((x) => x.classList.remove("sel")); tr.classList.add("sel");
+    const m = await j(`/api/runs/${encodeURIComponent(tr.dataset.n)}/metrics`);
+    $("#run-title").textContent = `Loss: ${tr.dataset.n} (train blue, validation orange)`;
+    lines($("#run-chart"), [{ values: m.map((r) => r.loss) }, { values: m.map((r) => r.val_loss ?? NaN), width: 2 }], { h: 220 });
+  });
+}
+
+async function loadBench() {
+  const b = await j("/api/benchmarks");
+  $("#bench-list").innerHTML = b.map((r) => {
+    const rows = Object.entries(r.splits).map(([k, s]) => {
+      const fails = Object.entries(s.failures).sort((a, c) => c[1] - a[1]).map(([m, n]) => `${esc(m)} ${n}`).join(", ");
+      return `<tr><td>${esc(k)}</td><td>${s.n}</td><td><div class="bar" style="width: ${Math.round(100 * s.success_rate)}px"></div></td><td><b>${pct(s.success_rate)}</b> <span class="muted">(${pct(s.ci95[0])}–${pct(s.ci95[1])})</span></td><td>${pct(s.by_task.pick_place)}</td><td>${pct(s.by_task.stack)}</td><td class="muted">${fails || "–"}</td></tr>`;
+    }).join("");
+    const vids = r.videos.slice(0, 12).map((v) => `<a href="/reports/${encodeURI(v)}">${esc(v.split("/").slice(-2).join("/"))}</a>`).join(" · ");
+    return `<div class="panel" style="margin-bottom: 14px"><h2>${esc(r.id)} <span class="muted">· policy <code>${esc(r.policy)}</code> · ${esc(JSON.stringify(r.conditions))}</span></h2>
+      <table><thead><tr><th>split</th><th>n</th><th></th><th>success (95% CI)</th><th>pick_place</th><th>stack</th><th>failures</th></tr></thead><tbody>${rows}</tbody></table>
+      <p class="muted" style="margin-top: 8px">${vids ? "videos: " + vids : ""}</p></div>`;
+  }).join("") || "<p class='muted'>No benchmark reports yet.</p>";
+}
+loadData(); loadRuns(); loadBench();
+</script>
+</body>
+</html>

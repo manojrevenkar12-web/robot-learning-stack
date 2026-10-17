@@ -1,0 +1,12 @@
+name: default
+sources: [teleop_ros, synthetic]
+require_success: true
+max_health: warn
+min_length: 40
+max_length: 320
+max_filled_fraction: 0.05
+dedup: true
+near_dup_threshold: 0.01        # rad, mean abs action difference
+near_dup_scene_threshold: 15.0  # grey levels, first front frame on a 30x40 grid (99th pct)
+val_fraction: 0.1
+split_seed: 0

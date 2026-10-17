@@ -1,0 +1,15 @@
+# Fine-tuning study: adapt act_main to two unseen object colours from N demos.
+# Mode, N and steps come from the command line (scripts/run_studies.py).
+run_name: ft_unseen_color
+dataset: data/release/rls_unseen_color
+policy: chunk_transformer
+policy_config: {chunk: 20, action_space: ee, augment_shift: 2, aux_object_weight: 1.0, state_noise: 0.1, state_dropout: 0.3, film: true}
+init_from: runs/act_main/best
+finetune: lora
+lora_rank: 8
+steps: 600
+batch_size: 32
+lr: 1.0e-3
+warmup: 50
+eval_every: 100
+threads: 1

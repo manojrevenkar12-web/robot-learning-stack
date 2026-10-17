@@ -1,0 +1,7 @@
+name: clean
+streams:
+  joint_states: {rate_hz: 120}
+  wrist_ft: {rate_hz: 120}
+  cam_front: {rate_hz: 15, phase_s: 0.021}
+  cam_wrist: {rate_hz: 15, phase_s: 0.043}
+  joint_command: {rate_hz: 15}

@@ -1,0 +1,29 @@
+# Deliberately bad: used by the stress tests and to score the health checks.
+name: stress
+streams:
+  joint_states: {rate_hz: 120, latency_s: 0.001, drop_prob: 0.01, burst_prob: 0.3}
+  wrist_ft: {rate_hz: 120, latency_s: 0.002, drop_prob: 0.02, outage_prob: 0.15}
+  cam_front:
+    rate_hz: 15
+    phase_s: 0.021
+    latency_s: 0.030
+    latency_jitter_s: 0.010
+    stamp_jitter_s: 0.004
+    drop_prob: 0.03
+    burst_prob: 0.4
+    burst_len: [3, 12]
+    corrupt_prob: 0.02
+  cam_wrist:
+    rate_hz: 15
+    phase_s: 0.043
+    latency_s: 0.045
+    latency_jitter_s: 0.015
+    stamp_offset_s: -0.180
+    stamp_drift_ppm: -1500
+    stamp_jitter_s: 0.004
+    drop_prob: 0.03
+    burst_prob: 0.4
+    corrupt_prob: 0.02
+    outage_prob: 0.15
+  joint_command: {rate_hz: 15}
+calibration: {prob: 0.3, translation_m: 0.04, rotation_deg: 3.0}

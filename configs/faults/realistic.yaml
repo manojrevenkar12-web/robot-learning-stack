@@ -1,0 +1,28 @@
+# What a reasonable lab cell looks like: USB wrist camera on its own clock,
+# small transport latency, occasional drops and the odd bad frame.
+name: realistic
+streams:
+  joint_states: {rate_hz: 120, latency_s: 0.001, drop_prob: 0.001}
+  wrist_ft: {rate_hz: 120, latency_s: 0.002, drop_prob: 0.002}
+  cam_front:
+    rate_hz: 15
+    phase_s: 0.021
+    latency_s: 0.030
+    latency_jitter_s: 0.005
+    stamp_jitter_s: 0.002
+    drop_prob: 0.004
+    burst_prob: 0.2
+    corrupt_prob: 0.002
+  cam_wrist:
+    rate_hz: 15
+    phase_s: 0.043
+    latency_s: 0.045
+    latency_jitter_s: 0.008
+    stamp_offset_s: 0.120     # camera clock 120 ms ahead of the robot clock
+    stamp_drift_ppm: 600      # and running fast
+    stamp_jitter_s: 0.003
+    drop_prob: 0.006
+    burst_prob: 0.2
+    corrupt_prob: 0.003
+  joint_command: {rate_hz: 15}
+calibration: {prob: 0.0}

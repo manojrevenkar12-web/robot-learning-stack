@@ -1,0 +1,12 @@
+# Ablation baseline: the first recipe. Joint-position actions, DrQ shift 4, no auxiliary loss, no
+# proprioception regularisation, 3500 steps. 8% closed-loop success in distribution.
+run_name: act_joint
+dataset: data/release/rls_panda
+policy: chunk_transformer
+policy_config: {chunk: 20, d_model: 160, enc_layers: 3, dec_layers: 2, dropout: 0.1, augment_shift: 4}
+steps: 3500
+batch_size: 32
+lr: 3.0e-4
+warmup: 150
+eval_every: 250
+threads: 1

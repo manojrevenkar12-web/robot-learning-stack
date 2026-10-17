@@ -1,0 +1,25 @@
+name: nightly
+# Release-readiness gate: regenerate a small dataset, train a short policy, benchmark it
+# and compare against the committed baseline. Fails on a significant regression.
+on:
+  schedule: [{ cron: "17 2 * * *" }]
+  workflow_dispatch:
+
+jobs:
+  release-readiness:
+    runs-on: ubuntu-24.04
+    container: ros:jazzy-ros-base
+    timeout-minutes: 300
+    env: { MUJOCO_GL: osmesa, PYOPENGL_PLATFORM: osmesa, PIP_BREAK_SYSTEM_PACKAGES: "1", ROS_AUTOMATIC_DISCOVERY_RANGE: LOCALHOST, HF_HUB_OFFLINE: "1" }
+    steps:
+      - uses: actions/checkout@v4
+      - run: apt-get update && apt-get install -y python3-pip python3-venv libosmesa6 ffmpeg ros-jazzy-rosbag2-storage-mcap
+      - run: pip3 install --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
+      - run: |
+          python3 -m venv /opt/lerobot-venv
+          /opt/lerobot-venv/bin/pip install --extra-index-url https://download.pytorch.org/whl/cpu "lerobot[dataset]==0.6.1" pyyaml h5py
+      - shell: bash
+        run: source /opt/ros/jazzy/setup.bash && python3 scripts/release_check.py --quick --out reports/nightly
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: nightly-report, path: reports/nightly }

@@ -1,0 +1,10 @@
+# Data-source study: teleop episodes only; same recipe and step budget as recipe_mixed (pilot_film).
+run_name: src_teleop
+dataset: data/release/rls_panda
+policy: chunk_transformer
+policy_config: {chunk: 20, action_space: ee, augment_shift: 2, aux_object_weight: 1.0, state_noise: 0.1, state_dropout: 0.3, film: true}
+sources: [teleop_ros]
+steps: 1500
+batch_size: 32
+eval_every: 250
+threads: 1
