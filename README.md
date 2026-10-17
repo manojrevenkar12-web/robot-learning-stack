@@ -66,8 +66,8 @@ cube within 30 mm in 75% of validation episodes, against 2-10% without FiLM.
 |---|---|
 | teleop vs synthetic vs both | both 35% in distribution, synthetic only 20%, teleop only 15% (intervals overlap) |
 | policy class | action chunking 35%, single-step BC 0%, diffusion head 0% at this step budget |
-| `act_main` with observations 133 / 267 ms old, or actions applied 2 ticks late (30 episodes each) | 47%, 50%, 50% vs 43% as trained: no measurable loss; the moves are slow and chunked actions with temporal ensembling absorb the delay |
-| fine-tuning `act_main` to two unseen cube colours from 10 or 25 demos (LoRA, full, scratch; 600-1500 steps) | a negative result: nothing beat the base policy's 17% on unseen colours (5-20%, intervals overlap); LoRA at a high learning rate cost in-distribution success (43% to 15%), full fine-tuning at 1e-4 kept it (30-50%) |
+| `act_main` with observations 133 / 267 ms old, or actions applied 2 ticks late (30 episodes each) | 47%, 50%, 50% vs 43% as trained: no measurable loss, likely because the moves are slow and chunked actions with temporal ensembling absorb the delay |
+| fine-tuning `act_main` to two unseen cube colours from 10 or 25 demos (LoRA, full, scratch; 600-1500 steps) | a negative result: nothing beat the base policy's 17% on unseen colours (5-20%, intervals overlap); LoRA on 25 demos at a high learning rate cost in-distribution success (43% to 15%), full fine-tuning at 1e-4 kept most of it (30-50%) |
 
 **Reinforcement learning** (PPO reach-and-hold on the Panda, 200 evaluation episodes each)
 
