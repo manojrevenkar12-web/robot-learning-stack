@@ -1,0 +1,17 @@
+{
+ "bundle": "runs/pilot_kp/best",
+ "train": {
+  "first_frame_target_error_mm_median": NaN,
+  "first_frame_target_within_30mm": NaN,
+  "grasp_error_mm_real": 6.7,
+  "grasp_error_mm_images_swapped": 34.3,
+  "grasp_error_mm_state_noise": 63.8
+ },
+ "val": {
+  "first_frame_target_error_mm_median": NaN,
+  "first_frame_target_within_30mm": NaN,
+  "grasp_error_mm_real": 7.4,
+  "grasp_error_mm_images_swapped": 29.5,
+  "grasp_error_mm_state_noise": 82.2
+ }
+}

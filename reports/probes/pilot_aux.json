@@ -1,0 +1,17 @@
+{
+ "bundle": "runs/pilot_aux/best",
+ "train": {
+  "first_frame_target_error_mm_median": 95.8,
+  "first_frame_target_within_30mm": 0.1,
+  "grasp_error_mm_real": 6.9,
+  "grasp_error_mm_images_swapped": 40.6,
+  "grasp_error_mm_state_noise": 65.1
+ },
+ "val": {
+  "first_frame_target_error_mm_median": 92.5,
+  "first_frame_target_within_30mm": 0.075,
+  "grasp_error_mm_real": 7.8,
+  "grasp_error_mm_images_swapped": 31.3,
+  "grasp_error_mm_state_noise": 70.7
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "dynamics": {
+  "nominal": {
+   "kp_scale": [
+    1.0,
+    1.0
+   ],
+   "damping_scale": [
+    1.0,
+    1.0
+   ],
+   "payload_kg": [
+    0.0,
+    0.0
+   ],
+   "obs_noise": 0.0,
+   "latency_steps": [
+    0,
+    0
+   ]
+  },
+  "randomized": {
+   "kp_scale": [
+    0.6,
+    1.4
+   ],
+   "damping_scale": [
+    0.5,
+    2.0
+   ],
+   "payload_kg": [
+    0.0,
+    1.5
+   ],
+   "obs_noise": 0.01,
+   "latency_steps": [
+    0,
+    2
+   ]
+  },
+  "target": {
+   "kp_scale": [
+    0.5,
+    0.65
+   ],
+   "damping_scale": [
+    1.5,
+    2.5
+   ],
+   "payload_kg": [
+    1.0,
+    1.6
+   ],
+   "obs_noise": 0.01,
+   "latency_steps": [
+    2,
+    2
+   ]
+  }
+ },
+ "results": {
+  "ppo_nominal": {
+   "train_steps": 400000,
+   "eval_nominal": {
+    "episodes": 200,
+    "successes": 200,
+    "ci95": [
+     0.9811539940816791,
+     1.0
+    ],
+    "success_rate": 1.0,
+    "final_pos_err_mm_median": 4.072741679258704,
+    "steps_mean": 12.41
+   },
+   "eval_randomized": {
+    "episodes": 200,
+    "successes": 76,
+    "ci95": [
+     0.3155889366123922,
+     0.4489341048080049
+    ],
+    "success_rate": 0.38,
+    "final_pos_err_mm_median": 64.46850345753622,
+    "steps_mean": 42.14
+   },
+   "eval_target": {
+    "episodes": 200,
+    "successes": 0,
+    "ci95": [
+     0.0,
+     0.018846005918320894
+    ],
+    "success_rate": 0.0,
+    "final_pos_err_mm_median": 252.35053138276044,
+    "steps_mean": 60.0
+   },
+   "onnx": {
+    "max_abs_diff": 2.980232238769531e-07,
+    "onnx_mean_ms": 0.01985289999993256
+   }
+  },
+  "ppo_domain_randomized": {
+   "train_steps": 1000000,
+   "eval_nominal": {
+    "episodes": 200,
+    "successes": 200,
+    "ci95": [
+     0.9811539940816791,
+     1.0
+    ],
+    "success_rate": 1.0,
+    "final_pos_err_mm_median": 6.097100492597967,
+    "steps_mean": 14.23
+   },
+   "eval_randomized": {
+    "episodes": 200,
+    "successes": 200,
+    "ci95": [
+     0.9811539940816791,
+     1.0
+    ],
+    "success_rate": 1.0,
+    "final_pos_err_mm_median": 6.9513595427659665,
+    "steps_mean": 16.62
+   },
+   "eval_target": {
+    "episodes": 200,
+    "successes": 200,
+    "ci95": [
+     0.9811539940816791,
+     1.0
+    ],
+    "success_rate": 1.0,
+    "final_pos_err_mm_median": 7.581384878876793,
+    "steps_mean": 20.025
+   },
+   "onnx": {
+    "max_abs_diff": 2.980232238769531e-07,
+    "onnx_mean_ms": 0.040251539999189845
+   }
+  }
+ }
+}

@@ -57,7 +57,8 @@ for.
 **FiLM** (as in RT-1): the instruction tokens, in order, go through a small MLP that outputs a
 per-channel scale and shift for every CNN stage of both cameras, zero-initialised so it starts as
 a no-op. At 1500 steps first-frame grounding rose to 35% of validation episodes and closed-loop
-success to 35%. `act_main` trains this recipe for 6000 steps.
+success to 35%. `act_main` trains this recipe for 6000 steps: first-frame grounding 75% of validation
+episodes (median error 18 mm) and 43% closed-loop success in distribution.
 
 ## 5. Things that did not help (at this budget)
 
@@ -65,7 +66,18 @@ success to 35%. `act_main` trains this recipe for 6000 steps.
   success, 20% faster per step. Kept as an option (`keypoints: 32`).
 * no image augmentation at all.
 
-## 6. Caveats
+## 6. Fine-tuning to new objects did not work at this budget
+
+Study 6 adapts `act_main` to purple and orange cubes from 10 or 25 demonstrations. None of the
+variants beat the base policy's 17% on the unseen-colour split. Two likely reasons, both testable:
+the new colour words enter through the FiLM network, which LoRA (on the transformer only) leaves
+frozen, so LoRA can only move the word embeddings; and 600 steps over a few thousand frames is
+little even for an adapter. LoRA at learning rate 1e-3 also cost in-distribution success
+(43% to 15%), while full fine-tuning at 1e-4 kept most of it. Next steps: put adapters on the FiLM
+network and the last CNN stage, mix a replay share of the original data into fine-tuning, and
+sweep the adapter learning rate.
+
+## 7. Caveats
 
 * The auxiliary labels are free in simulation. On real recordings they would come from the
   synthetic part of a mixed dataset, from a calibrated perception stack or from annotation.

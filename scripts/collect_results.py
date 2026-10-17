@@ -108,7 +108,7 @@ def main() -> None:
             "conditions": b["conditions"],
             "splits": {k: {kk: v[kk] for kk in ("n", "success_rate", "ci95", "failures", "by_task")} for k, v in b["splits"].items()},
         }
-    out["rl"] = _load(a.runs / "rl" / "rl_results.json")
+    out["rl"] = _load(a.runs / "rl" / "rl_results.json") or _load(a.reports / "rl" / "rl_results.json")
     out["codec"] = _load(a.reports / "codec" / "codec_study.json")
     out["perception"] = _load(a.reports / "perception" / "perception_eval.json")
     out["finetune_data"] = _load(a.data / "release" / "rls_unseen_color" / "meta" / "rls_release.json")

@@ -1,0 +1,17 @@
+{
+ "bundle": "runs/pilot_film/best",
+ "train": {
+  "first_frame_target_error_mm_median": 36.8,
+  "first_frame_target_within_30mm": 0.425,
+  "grasp_error_mm_real": 13.5,
+  "grasp_error_mm_images_swapped": 117.4,
+  "grasp_error_mm_state_noise": 19.0
+ },
+ "val": {
+  "first_frame_target_error_mm_median": 53.7,
+  "first_frame_target_within_30mm": 0.35,
+  "grasp_error_mm_real": 16.3,
+  "grasp_error_mm_images_swapped": 103.8,
+  "grasp_error_mm_state_noise": 23.3
+ }
+}

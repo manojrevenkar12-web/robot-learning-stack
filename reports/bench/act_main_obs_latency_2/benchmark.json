@@ -1,0 +1,348 @@
+{
+ "policy": {
+  "run_name": "act_main",
+  "config_hash": "628a4f7e2a",
+  "dataset": "data/release/rls_panda",
+  "dataset_version": "v-8d8fc45d7b",
+  "git_sha": "unknown",
+  "train_episodes": 409,
+  "train_frames": 48207,
+  "sources": null,
+  "finetune": "full",
+  "init_from": null,
+  "params": {
+   "total": 2763336,
+   "trainable": 2763336
+  },
+  "step": 5500,
+  "val_loss": 0.21666909381747246
+ },
+ "conditions": {
+  "obs_latency_steps": 2,
+  "image_noise_std": 2.0,
+  "action_delay_steps": 0
+ },
+ "splits": {
+  "in_distribution": {
+   "split": "in_distribution",
+   "n": 30,
+   "success_rate": 0.4666666666666667,
+   "ci95": [
+    0.30232127224128236,
+    0.6385798671847496
+   ],
+   "by_task": {
+    "pick_place": 0.6666666666666666,
+    "stack": 0.26666666666666666
+   },
+   "failures": {
+    "dropped": 3,
+    "no_grasp": 9,
+    "misplaced": 3,
+    "timeout": 1
+   },
+   "episodes": [
+    {
+     "split": "in_distribution",
+     "seed": 900000,
+     "task": "pick_place",
+     "instruction": "put the green cube in the bin",
+     "success": false,
+     "failure_mode": "dropped",
+     "steps": 300,
+     "mean_infer_ms": 24.93787329006106
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900001,
+     "task": "stack",
+     "instruction": "stack the yellow cube on the blue cube",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 102,
+     "mean_infer_ms": 26.486016715566887
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900002,
+     "task": "pick_place",
+     "instruction": "put the red cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 107,
+     "mean_infer_ms": 22.03847255142162
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900003,
+     "task": "stack",
+     "instruction": "stack the green cube on the blue cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 24.560262923502403
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900004,
+     "task": "pick_place",
+     "instruction": "put the green cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 126,
+     "mean_infer_ms": 23.321508373180496
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900005,
+     "task": "stack",
+     "instruction": "stack the blue cube on the red cube",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 107,
+     "mean_infer_ms": 23.70420517733105
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900006,
+     "task": "pick_place",
+     "instruction": "put the yellow cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 129,
+     "mean_infer_ms": 25.960420837035663
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900007,
+     "task": "stack",
+     "instruction": "stack the yellow cube on the green cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 23.628826933248394
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900008,
+     "task": "pick_place",
+     "instruction": "put the yellow cube in the bin",
+     "success": false,
+     "failure_mode": "dropped",
+     "steps": 300,
+     "mean_infer_ms": 24.00786386320154
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900009,
+     "task": "stack",
+     "instruction": "stack the red cube on the green cube",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 95,
+     "mean_infer_ms": 23.411234968271426
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900010,
+     "task": "pick_place",
+     "instruction": "put the green cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 102,
+     "mean_infer_ms": 24.4097552940908
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900011,
+     "task": "stack",
+     "instruction": "stack the yellow cube on the green cube",
+     "success": false,
+     "failure_mode": "misplaced",
+     "steps": 300,
+     "mean_infer_ms": 23.400567219990382
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900012,
+     "task": "pick_place",
+     "instruction": "put the yellow cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 129,
+     "mean_infer_ms": 23.835243457283504
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900013,
+     "task": "stack",
+     "instruction": "stack the blue cube on the red cube",
+     "success": false,
+     "failure_mode": "misplaced",
+     "steps": 300,
+     "mean_infer_ms": 24.1415631367272
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900014,
+     "task": "pick_place",
+     "instruction": "put the red cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 106,
+     "mean_infer_ms": 24.253719811517755
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900015,
+     "task": "stack",
+     "instruction": "stack the blue cube on the yellow cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 25.034213709732285
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900016,
+     "task": "pick_place",
+     "instruction": "put the yellow cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 142,
+     "mean_infer_ms": 25.109846887062304
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900017,
+     "task": "stack",
+     "instruction": "stack the blue cube on the green cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 17.93417507346021
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900018,
+     "task": "pick_place",
+     "instruction": "put the green cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 253,
+     "mean_infer_ms": 23.510357695536204
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900019,
+     "task": "stack",
+     "instruction": "stack the yellow cube on the green cube",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 104,
+     "mean_infer_ms": 24.764220817605047
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900020,
+     "task": "pick_place",
+     "instruction": "put the red cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 99,
+     "mean_infer_ms": 22.590046302995155
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900021,
+     "task": "stack",
+     "instruction": "stack the green cube on the blue cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 23.61874146653766
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900022,
+     "task": "pick_place",
+     "instruction": "put the green cube in the bin",
+     "success": false,
+     "failure_mode": "timeout",
+     "steps": 300,
+     "mean_infer_ms": 24.254357893150882
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900023,
+     "task": "stack",
+     "instruction": "stack the yellow cube on the blue cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 24.830270586462575
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900024,
+     "task": "pick_place",
+     "instruction": "put the red cube in the bin",
+     "success": true,
+     "failure_mode": "success",
+     "steps": 125,
+     "mean_infer_ms": 26.818435008171946
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900025,
+     "task": "stack",
+     "instruction": "stack the green cube on the red cube",
+     "success": false,
+     "failure_mode": "misplaced",
+     "steps": 300,
+     "mean_infer_ms": 30.011836466777215
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900026,
+     "task": "pick_place",
+     "instruction": "put the red cube in the bin",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 32.55727375336088
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900027,
+     "task": "stack",
+     "instruction": "stack the red cube on the yellow cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 54.41026190659613
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900028,
+     "task": "pick_place",
+     "instruction": "put the green cube in the bin",
+     "success": false,
+     "failure_mode": "dropped",
+     "steps": 300,
+     "mean_infer_ms": 46.87322227985229
+    },
+    {
+     "split": "in_distribution",
+     "seed": 900029,
+     "task": "stack",
+     "instruction": "stack the red cube on the blue cube",
+     "success": false,
+     "failure_mode": "no_grasp",
+     "steps": 300,
+     "mean_infer_ms": 53.8834344734399
+    }
+   ]
+  }
+ }
+}

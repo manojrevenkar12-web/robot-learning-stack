@@ -250,7 +250,18 @@ def write_report() -> Path:
         L.append(
             f"| `{run}` | {what} | {vl:.3f} | {gtxt} | {_cell('abl_' + run, 'in_distribution')} | {top} |" if vl else f"| `{run}` | {what} | – | – | – | – |"
         )
+    pm = _probe("act_main").get("val", {}).get("first_frame_target_within_30mm")
+    bm = _bench("act_main")
+    if bm:
+        top = max(bm["splits"]["in_distribution"]["failures"].items(), key=lambda kv: kv[1])[0] if bm["splits"]["in_distribution"]["failures"] else "–"
+        vl = _run("act_main").get("best_val_loss", float("nan"))
+        L.append(
+            f"| `act_main` | final recipe, {_run('act_main').get('steps')} steps (30 episodes) | {vl:.3f} | {f'{100 * pm:.0f}%' if pm is not None else '–'} | {_cell('act_main', 'in_distribution')} | {top} |"
+        )
     L += [
+        "",
+        "Validation loss includes the auxiliary term for runs that have it, so it is only comparable within the first and",
+        "second halves of the table.",
         "",
         "First-frame grounding: share of validation episodes where, before the arm has moved, the auxiliary head puts the",
         "instructed cube within 30 mm (`scripts/probe_policy.py`; only for runs with the auxiliary head). Validation loss does",

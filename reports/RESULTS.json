@@ -225,14 +225,2488 @@
    }
   }
  },
- "curation": null,
- "release": null,
- "runs": {},
- "onnx": {},
- "benchmarks": {},
- "rl": null,
- "codec": null,
- "deploy": null,
- "agent": null,
- "release_check": null
+ "curation": {
+  "version": "v-8d8fc45d7b",
+  "config": {
+   "name": "default",
+   "sources": [
+    "teleop_ros",
+    "synthetic"
+   ],
+   "require_success": true,
+   "max_health": "warn",
+   "min_length": 40,
+   "max_length": 320,
+   "max_filled_fraction": 0.05,
+   "dedup": true,
+   "near_dup_threshold": 0.01,
+   "near_dup_scene_threshold": 15.0,
+   "val_fraction": 0.1,
+   "split_seed": 0,
+   "max_episodes_per_source": {}
+  },
+  "curation_version": "curate-2",
+  "scanned": 557,
+  "kept": 455,
+  "dropped_by_reason": {
+   "health": 53,
+   "task_failed": 34,
+   "duplicate_near": 10,
+   "duplicate_exact": 5
+  },
+  "kept_by_source": {
+   "synthetic": 275,
+   "teleop_ros": 180
+  },
+  "kept_by_task": {
+   "pick_place": 230,
+   "stack": 225
+  },
+  "splits": {
+   "train": 409,
+   "val": 46
+  },
+  "frames": 53547,
+  "calibration_suspect_kept": 3
+ },
+ "release": {
+  "dataset_version": "v-8d8fc45d7b",
+  "episodes": 455,
+  "frames": 53547,
+  "splits": {
+   "train": "0:409",
+   "val": "409:455"
+  },
+  "by_source": {
+   "synthetic": 275,
+   "teleop_ros": 180
+  },
+  "video_codec": "libsvtav1",
+  "crf": 30,
+  "export_seconds": 1092.6,
+  "lerobot_codebase_version": "v3.0"
+ },
+ "runs": {
+  "_nofilm_bc": {
+   "run_name": "bc_single_step",
+   "config_hash": "fd2d1f272c",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2419144,
+    "trainable": 2419144
+   },
+   "best_val_loss": 0.2901793625205755,
+   "train_seconds": 1858.8,
+   "steps": 1500,
+   "run_dir": "runs/bc_single_step"
+  },
+  "_nofilm_src_synthetic": {
+   "run_name": "src_synthetic",
+   "config_hash": "edada11d3b",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 247,
+   "train_frames": 29233,
+   "sources": [
+    "synthetic"
+   ],
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2422184,
+    "trainable": 2422184
+   },
+   "best_val_loss": 0.3703601509332657,
+   "train_seconds": 1924.9,
+   "steps": 1500,
+   "run_dir": "runs/src_synthetic"
+  },
+  "_nofilm_src_teleop": {
+   "run_name": "src_teleop",
+   "config_hash": "0db7819bc5",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 162,
+   "train_frames": 18974,
+   "sources": [
+    "teleop_ros"
+   ],
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2422184,
+    "trainable": 2422184
+   },
+   "best_val_loss": 0.406181875616312,
+   "train_seconds": 1939.9,
+   "steps": 1500,
+   "run_dir": "runs/src_teleop"
+  },
+  "act_joint": {
+   "run_name": "act_main",
+   "config_hash": "a376ce08de",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2421864,
+    "trainable": 2421864
+   },
+   "best_val_loss": 0.14519082568585873,
+   "train_seconds": 4936.5,
+   "steps": 3500,
+   "run_dir": "runs/act_main"
+  },
+  "act_main": {
+   "run_name": "act_main",
+   "config_hash": "628a4f7e2a",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.21666909381747246,
+   "train_seconds": 8809.2,
+   "steps": 6000,
+   "run_dir": "runs/act_main"
+  },
+  "act_main_nofilm": {
+   "run_name": "act_main",
+   "config_hash": "e6443acc3d",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2422184,
+    "trainable": 2422184
+   },
+   "best_val_loss": 0.3076543062925339,
+   "train_seconds": 6503.5,
+   "steps": 5000,
+   "run_dir": "runs/act_main"
+  },
+  "bc_single_step": {
+   "run_name": "bc_single_step",
+   "config_hash": "ff3110daf8",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "0964daf",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2760296,
+    "trainable": 2760296
+   },
+   "best_val_loss": 0.2147842701524496,
+   "train_seconds": 2085.1,
+   "steps": 1500,
+   "run_dir": "runs/bc_single_step"
+  },
+  "diffusion_chunk": {
+   "run_name": "diffusion_chunk",
+   "config_hash": "0cef3fbf16",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "0964daf",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2815976,
+    "trainable": 2815976
+   },
+   "best_val_loss": 0.31914030760526657,
+   "train_seconds": 2152.9,
+   "steps": 1500,
+   "run_dir": "runs/diffusion_chunk"
+  },
+  "ft_full_10": {
+   "run_name": "ft_full_10",
+   "config_hash": "3b8e46c68d",
+   "dataset": "data/release/rls_unseen_color",
+   "dataset_version": "v-1994eee9ac",
+   "git_sha": "bd8694c",
+   "train_episodes": 10,
+   "train_frames": 1085,
+   "sources": null,
+   "finetune": "full",
+   "init_from": "runs/act_main/best",
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.2280429657548666,
+   "train_seconds": 904.5,
+   "steps": 600,
+   "run_dir": "runs/ft_full_10"
+  },
+  "ft_full_25": {
+   "run_name": "ft_full_25",
+   "config_hash": "85c0ba82c8",
+   "dataset": "data/release/rls_unseen_color",
+   "dataset_version": "v-1994eee9ac",
+   "git_sha": "bd8694c",
+   "train_episodes": 25,
+   "train_frames": 3069,
+   "sources": null,
+   "finetune": "full",
+   "init_from": "runs/act_main/best",
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.22872424684464931,
+   "train_seconds": 1067.6,
+   "steps": 600,
+   "run_dir": "runs/ft_full_25"
+  },
+  "ft_lora_10": {
+   "run_name": "ft_lora_10",
+   "config_hash": "95447d7682",
+   "dataset": "data/release/rls_unseen_color",
+   "dataset_version": "v-1994eee9ac",
+   "git_sha": "bd8694c",
+   "train_episodes": 10,
+   "train_frames": 1085,
+   "sources": null,
+   "finetune": "lora",
+   "init_from": "runs/act_main/best",
+   "params": {
+    "total": 2899016,
+    "trainable": 141926
+   },
+   "best_val_loss": 0.25030920654535294,
+   "train_seconds": 834.6,
+   "steps": 600,
+   "run_dir": "runs/ft_lora_10"
+  },
+  "ft_lora_25": {
+   "run_name": "ft_lora_25",
+   "config_hash": "cd82435ca4",
+   "dataset": "data/release/rls_unseen_color",
+   "dataset_version": "v-1994eee9ac",
+   "git_sha": "bd8694c",
+   "train_episodes": 25,
+   "train_frames": 3069,
+   "sources": null,
+   "finetune": "lora",
+   "init_from": "runs/act_main/best",
+   "params": {
+    "total": 2899016,
+    "trainable": 141926
+   },
+   "best_val_loss": 0.2131040208041668,
+   "train_seconds": 1398.0,
+   "steps": 600,
+   "run_dir": "runs/ft_lora_25"
+  },
+  "ft_scratch_25": {
+   "run_name": "ft_scratch_25",
+   "config_hash": "7606649efb",
+   "dataset": "data/release/rls_unseen_color",
+   "dataset_version": "v-1994eee9ac",
+   "git_sha": "ec0cf57",
+   "train_episodes": 25,
+   "train_frames": 3069,
+   "sources": null,
+   "finetune": "scratch",
+   "init_from": "runs/act_main/best",
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.6326537951827049,
+   "train_seconds": 2465.7,
+   "steps": 1500,
+   "run_dir": "runs/ft_scratch_25"
+  },
+  "pilot_aux": {
+   "run_name": "pilot_aux",
+   "config_hash": "4d74a7a6f0",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2422184,
+    "trainable": 2422184
+   },
+   "best_val_loss": 0.30292023345828056,
+   "train_seconds": 1890.3,
+   "steps": 1500,
+   "run_dir": "runs/pilot_aux"
+  },
+  "pilot_aux_sd": {
+   "run_name": "pilot_aux_sd",
+   "config_hash": "ae127dfc6a",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2422184,
+    "trainable": 2422184
+   },
+   "best_val_loss": 0.3557438403367996,
+   "train_seconds": 1889.7,
+   "steps": 1500,
+   "run_dir": "runs/pilot_aux_sd"
+  },
+  "pilot_ee": {
+   "run_name": "pilot_ee",
+   "config_hash": "08174ebe55",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2421542,
+    "trainable": 2421542
+   },
+   "best_val_loss": 0.1593988137319684,
+   "train_seconds": 1204.4,
+   "steps": 1500,
+   "run_dir": "runs/pilot_ee"
+  },
+  "pilot_film": {
+   "run_name": "pilot_film",
+   "config_hash": "5741353c11",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.32062868773937225,
+   "train_seconds": 1433.9,
+   "steps": 1500,
+   "run_dir": "runs/pilot_film"
+  },
+  "pilot_kp": {
+   "run_name": "pilot_kp",
+   "config_hash": "0f6360601b",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2469992,
+    "trainable": 2469992
+   },
+   "best_val_loss": 0.15209561120718718,
+   "train_seconds": 1390.0,
+   "steps": 1500,
+   "run_dir": "runs/pilot_kp"
+  },
+  "pilot_noaug": {
+   "run_name": "pilot_noaug",
+   "config_hash": "2b0aab89e5",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2421542,
+    "trainable": 2421542
+   },
+   "best_val_loss": 0.1499754311516881,
+   "train_seconds": 1759.9,
+   "steps": 1500,
+   "run_dir": "runs/pilot_noaug"
+  },
+  "pilot_nostate": {
+   "run_name": "pilot_nostate",
+   "config_hash": "9c150238fa",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2421542,
+    "trainable": 2421542
+   },
+   "best_val_loss": 0.24928969331085682,
+   "train_seconds": 2052.2,
+   "steps": 1500,
+   "run_dir": "runs/pilot_nostate"
+  },
+  "pilot_sd": {
+   "run_name": "pilot_sd",
+   "config_hash": "fecd7a40b2",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2421542,
+    "trainable": 2421542
+   },
+   "best_val_loss": 0.19933662004768848,
+   "train_seconds": 2046.6,
+   "steps": 1500,
+   "run_dir": "runs/pilot_sd"
+  },
+  "src_synthetic": {
+   "run_name": "src_synthetic",
+   "config_hash": "b6e29d0fc0",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "0964daf",
+   "train_episodes": 247,
+   "train_frames": 29233,
+   "sources": [
+    "synthetic"
+   ],
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.3277393486350775,
+   "train_seconds": 2101.8,
+   "steps": 1500,
+   "run_dir": "runs/src_synthetic"
+  },
+  "src_teleop": {
+   "run_name": "src_teleop",
+   "config_hash": "9477ce77a3",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 162,
+   "train_frames": 18974,
+   "sources": [
+    "teleop_ros"
+   ],
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "best_val_loss": 0.35836850479245186,
+   "train_seconds": 2341.9,
+   "steps": 1500,
+   "run_dir": "runs/src_teleop"
+  }
+ },
+ "onnx": {
+  "_nofilm_bc": {
+   "max_abs_diff": 8.940696716308594e-07,
+   "onnx_p50_ms": 18.575992500700522,
+   "onnx_p95_ms": 23.95939239759174,
+   "bytes": 9825403
+  },
+  "_nofilm_src_synthetic": {
+   "max_abs_diff": 1.1920928955078125e-06,
+   "onnx_p50_ms": 15.348369499406544,
+   "onnx_p95_ms": 25.29102459793651,
+   "bytes": 9837563
+  },
+  "_nofilm_src_teleop": {
+   "max_abs_diff": 2.384185791015625e-06,
+   "onnx_p50_ms": 14.348224500281503,
+   "onnx_p95_ms": 25.440676650578123,
+   "bytes": 9837563
+  },
+  "act_joint": {
+   "max_abs_diff": 5.7220458984375e-06,
+   "onnx_p50_ms": 17.75660749990493,
+   "onnx_p95_ms": 29.376542849877318,
+   "bytes": 9838557
+  },
+  "act_main": {
+   "max_abs_diff": 7.867813110351562e-06,
+   "onnx_p50_ms": 23.759539999446133,
+   "onnx_p95_ms": 36.50078590144403,
+   "bytes": 11238026
+  },
+  "act_main_nofilm": {
+   "max_abs_diff": 1.8477439880371094e-06,
+   "onnx_p50_ms": 21.004025500587886,
+   "onnx_p95_ms": 32.402420600010394,
+   "bytes": 9837563
+  },
+  "bc_single_step": {
+   "max_abs_diff": 1.6987323760986328e-06,
+   "onnx_p50_ms": 20.558567499392666,
+   "onnx_p95_ms": 32.208145596450784,
+   "bytes": 11225866
+  },
+  "diffusion_chunk": {
+   "max_abs_diff": 1.9073486328125e-06,
+   "onnx_p50_ms": 47.582698502083076,
+   "onnx_p95_ms": 67.6170300492231,
+   "bytes": 11958925
+  },
+  "ft_full_10": {
+   "max_abs_diff": 1.2159347534179688e-05,
+   "onnx_p50_ms": 23.580186498293187,
+   "onnx_p95_ms": 31.94601180002792,
+   "bytes": 11238026
+  },
+  "ft_full_25": {
+   "max_abs_diff": 9.939074516296387e-06,
+   "onnx_p50_ms": 17.732157499267487,
+   "onnx_p95_ms": 30.5459363036789,
+   "bytes": 11238026
+  },
+  "ft_lora_10": {
+   "max_abs_diff": 6.67572021484375e-06,
+   "onnx_p50_ms": 31.276767502276925,
+   "onnx_p95_ms": 38.84809109913478,
+   "bytes": 11238026
+  },
+  "ft_lora_25": {
+   "max_abs_diff": 1.4066696166992188e-05,
+   "onnx_p50_ms": 17.733383498125477,
+   "onnx_p95_ms": 32.89855054936197,
+   "bytes": 11238026
+  },
+  "ft_scratch_25": {
+   "max_abs_diff": 2.1457672119140625e-06,
+   "onnx_p50_ms": 9.858709498075768,
+   "onnx_p95_ms": 17.778910948254634,
+   "bytes": 11238026
+  },
+  "pilot_aux": {
+   "max_abs_diff": 1.430511474609375e-06,
+   "onnx_p50_ms": 11.586344000534154,
+   "onnx_p95_ms": 18.86902079841093,
+   "bytes": 9837269
+  },
+  "pilot_aux_sd": {
+   "max_abs_diff": 2.6226043701171875e-06,
+   "onnx_p50_ms": 20.26162600122916,
+   "onnx_p95_ms": 23.506367948721167,
+   "bytes": 9837269
+  },
+  "pilot_ee": {
+   "max_abs_diff": 2.115964889526367e-06,
+   "onnx_p50_ms": 11.055163499804621,
+   "onnx_p95_ms": 15.276645751146138,
+   "bytes": 9837269
+  },
+  "pilot_film": {
+   "max_abs_diff": 1.7881393432617188e-06,
+   "onnx_p50_ms": 13.789865999569884,
+   "onnx_p95_ms": 19.404720647798968,
+   "bytes": 11238026
+  },
+  "pilot_kp": {
+   "max_abs_diff": 4.4852495193481445e-06,
+   "onnx_p50_ms": 16.066082498582546,
+   "onnx_p95_ms": 21.116482346769775,
+   "bytes": 9829158
+  },
+  "pilot_noaug": {
+   "max_abs_diff": 3.5762786865234375e-06,
+   "onnx_p50_ms": 18.266087499796413,
+   "onnx_p95_ms": 29.397987801712592,
+   "bytes": 9837269
+  },
+  "pilot_nostate": {
+   "max_abs_diff": 2.9802322387695312e-06,
+   "onnx_p50_ms": 17.59708849749586,
+   "onnx_p95_ms": 29.783937049978714,
+   "bytes": 9837448
+  },
+  "pilot_sd": {
+   "max_abs_diff": 1.0728836059570312e-06,
+   "onnx_p50_ms": 10.051664999991772,
+   "onnx_p95_ms": 17.966922248342605,
+   "bytes": 9837269
+  },
+  "src_synthetic": {
+   "max_abs_diff": 1.0728836059570312e-06,
+   "onnx_p50_ms": 20.096797998121474,
+   "onnx_p95_ms": 30.101478349024564,
+   "bytes": 11238026
+  },
+  "src_teleop": {
+   "max_abs_diff": 1.4901161193847656e-06,
+   "onnx_p50_ms": 16.742489002353977,
+   "onnx_p95_ms": 31.401770749653224,
+   "bytes": 11238026
+  }
+ },
+ "benchmarks": {
+  "abl_act_joint": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.05,
+     "ci95": [
+      0.008881219432873136,
+      0.23613589351256675
+     ],
+     "failures": {
+      "no_grasp": 15,
+      "timeout": 2,
+      "wrong_object": 2
+     },
+     "by_task": {
+      "pick_place": 0.1,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_aux": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 18,
+      "timeout": 1,
+      "wrong_object": 1
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_aux_sd": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.25,
+     "ci95": [
+      0.11186005278940309,
+      0.4687050099580636
+     ],
+     "failures": {
+      "no_grasp": 12,
+      "dropped": 1,
+      "timeout": 1,
+      "wrong_object": 1
+     },
+     "by_task": {
+      "pick_place": 0.5,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_ee": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 16,
+      "wrong_object": 3,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_film": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.35,
+     "ci95": [
+      0.18118954786794464,
+      0.5671494897805354
+     ],
+     "failures": {
+      "no_grasp": 11,
+      "wrong_object": 1,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.7,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_kp": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.05,
+     "ci95": [
+      0.008881219432873136,
+      0.23613589351256675
+     ],
+     "failures": {
+      "no_grasp": 15,
+      "wrong_object": 4
+     },
+     "by_task": {
+      "pick_place": 0.1,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_noaug": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.05,
+     "ci95": [
+      0.008881219432873136,
+      0.23613589351256675
+     ],
+     "failures": {
+      "no_grasp": 16,
+      "dropped": 2,
+      "wrong_object": 1
+     },
+     "by_task": {
+      "pick_place": 0.1,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_nostate": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "wrong_object": 2,
+      "timeout": 3,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "abl_pilot_sd": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.1,
+     "ci95": [
+      0.027865893984153206,
+      0.30103820641179335
+     ],
+     "failures": {
+      "no_grasp": 12,
+      "wrong_object": 2,
+      "timeout": 4
+     },
+     "by_task": {
+      "pick_place": 0.2,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "act_main": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 30,
+     "success_rate": 0.43333333333333335,
+     "ci95": [
+      0.2737723743061511,
+      0.6080299045459127
+     ],
+     "failures": {
+      "dropped": 5,
+      "no_grasp": 10,
+      "misplaced": 2
+     },
+     "by_task": {
+      "pick_place": 0.5333333333333333,
+      "stack": 0.3333333333333333
+     }
+    },
+    "position_ood": {
+     "n": 30,
+     "success_rate": 0.5,
+     "ci95": [
+      0.33153851227173764,
+      0.6684614877282624
+     ],
+     "failures": {
+      "timeout": 4,
+      "no_grasp": 6,
+      "misplaced": 3,
+      "dropped": 1,
+      "wrong_object": 1
+     },
+     "by_task": {
+      "pick_place": 0.7333333333333333,
+      "stack": 0.26666666666666666
+     }
+    },
+    "two_distractors": {
+     "n": 30,
+     "success_rate": 0.7,
+     "ci95": [
+      0.5212387898833981,
+      0.8333543735604105
+     ],
+     "failures": {
+      "dropped": 1,
+      "misplaced": 3,
+      "no_grasp": 5
+     },
+     "by_task": {
+      "pick_place": 0.9333333333333333,
+      "stack": 0.4666666666666667
+     }
+    },
+    "lighting_shift": {
+     "n": 30,
+     "success_rate": 0.36666666666666664,
+     "ci95": [
+      0.21873702204017678,
+      0.5448675356639506
+     ],
+     "failures": {
+      "dropped": 6,
+      "misplaced": 4,
+      "no_grasp": 8,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.6,
+      "stack": 0.13333333333333333
+     }
+    },
+    "camera_shift": {
+     "n": 30,
+     "success_rate": 0.5333333333333333,
+     "ci95": [
+      0.3614201328152505,
+      0.6976787277587178
+     ],
+     "failures": {
+      "misplaced": 4,
+      "no_grasp": 8,
+      "dropped": 1,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.8,
+      "stack": 0.26666666666666666
+     }
+    },
+    "unseen_color": {
+     "n": 30,
+     "success_rate": 0.16666666666666666,
+     "ci95": [
+      0.07336434240351683,
+      0.33564705185680177
+     ],
+     "failures": {
+      "no_grasp": 15,
+      "wrong_object": 6,
+      "dropped": 3,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.26666666666666666,
+      "stack": 0.06666666666666667
+     }
+    }
+   }
+  },
+  "act_main_action_delay_2": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 2
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 30,
+     "success_rate": 0.5,
+     "ci95": [
+      0.33153851227173764,
+      0.6684614877282624
+     ],
+     "failures": {
+      "dropped": 2,
+      "no_grasp": 7,
+      "misplaced": 5,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.8,
+      "stack": 0.2
+     }
+    }
+   }
+  },
+  "act_main_obs_latency_2": {
+   "conditions": {
+    "obs_latency_steps": 2,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 30,
+     "success_rate": 0.4666666666666667,
+     "ci95": [
+      0.30232127224128236,
+      0.6385798671847496
+     ],
+     "failures": {
+      "dropped": 3,
+      "no_grasp": 9,
+      "misplaced": 3,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.6666666666666666,
+      "stack": 0.26666666666666666
+     }
+    }
+   }
+  },
+  "act_main_obs_latency_4": {
+   "conditions": {
+    "obs_latency_steps": 4,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 30,
+     "success_rate": 0.5,
+     "ci95": [
+      0.33153851227173764,
+      0.6684614877282624
+     ],
+     "failures": {
+      "dropped": 3,
+      "timeout": 1,
+      "no_grasp": 6,
+      "misplaced": 5
+     },
+     "by_task": {
+      "pick_place": 0.7333333333333333,
+      "stack": 0.26666666666666666
+     }
+    }
+   }
+  },
+  "bc_single_step_class": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 19,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    },
+    "position_ood": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 19,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "diffusion_chunk_class": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 20
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    },
+    "position_ood": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 20
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "ft_full_10": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "unseen_color": {
+     "n": 20,
+     "success_rate": 0.05,
+     "ci95": [
+      0.008881219432873136,
+      0.23613589351256675
+     ],
+     "failures": {
+      "timeout": 2,
+      "no_grasp": 13,
+      "wrong_object": 2,
+      "misplaced": 1,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.1
+     }
+    },
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.5,
+     "ci95": [
+      0.2992949144298199,
+      0.7007050855701801
+     ],
+     "failures": {
+      "dropped": 2,
+      "no_grasp": 6,
+      "misplaced": 2
+     },
+     "by_task": {
+      "pick_place": 0.9,
+      "stack": 0.1
+     }
+    }
+   }
+  },
+  "ft_full_25": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "unseen_color": {
+     "n": 20,
+     "success_rate": 0.2,
+     "ci95": [
+      0.0806563532712,
+      0.41602172202575993
+     ],
+     "failures": {
+      "no_grasp": 8,
+      "dropped": 1,
+      "wrong_object": 6,
+      "misplaced": 1
+     },
+     "by_task": {
+      "pick_place": 0.4,
+      "stack": 0.0
+     }
+    },
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.3,
+     "ci95": [
+      0.14547527396899385,
+      0.5189767762289793
+     ],
+     "failures": {
+      "no_grasp": 9,
+      "dropped": 2,
+      "timeout": 2,
+      "misplaced": 1
+     },
+     "by_task": {
+      "pick_place": 0.6,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "ft_lora_10": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "unseen_color": {
+     "n": 20,
+     "success_rate": 0.1,
+     "ci95": [
+      0.027865893984153206,
+      0.30103820641179335
+     ],
+     "failures": {
+      "wrong_object": 4,
+      "no_grasp": 11,
+      "dropped": 2,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.2,
+      "stack": 0.0
+     }
+    },
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.35,
+     "ci95": [
+      0.18118954786794464,
+      0.5671494897805354
+     ],
+     "failures": {
+      "no_grasp": 13
+     },
+     "by_task": {
+      "pick_place": 0.7,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "ft_lora_25": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "unseen_color": {
+     "n": 20,
+     "success_rate": 0.05,
+     "ci95": [
+      0.008881219432873136,
+      0.23613589351256675
+     ],
+     "failures": {
+      "dropped": 4,
+      "no_grasp": 9,
+      "misplaced": 1,
+      "wrong_object": 4,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.1,
+      "stack": 0.0
+     }
+    },
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.15,
+     "ci95": [
+      0.05236779195949584,
+      0.36042329588695743
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "dropped": 2,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.3,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "ft_scratch_25": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "unseen_color": {
+     "n": 20,
+     "success_rate": 0.1,
+     "ci95": [
+      0.027865893984153206,
+      0.30103820641179335
+     ],
+     "failures": {
+      "no_grasp": 15,
+      "misplaced": 1,
+      "wrong_object": 1,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.2,
+      "stack": 0.0
+     }
+    },
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.0,
+     "ci95": [
+      0.0,
+      0.16113012549493322
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "dropped": 2,
+      "timeout": 2,
+      "wrong_object": 2
+     },
+     "by_task": {
+      "pick_place": 0.0,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "pilot_film_class": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.35,
+     "ci95": [
+      0.18118954786794464,
+      0.5671494897805354
+     ],
+     "failures": {
+      "no_grasp": 11,
+      "wrong_object": 1,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.7,
+      "stack": 0.0
+     }
+    },
+    "position_ood": {
+     "n": 20,
+     "success_rate": 0.15,
+     "ci95": [
+      0.05236779195949584,
+      0.36042329588695743
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "timeout": 2,
+      "misplaced": 1
+     },
+     "by_task": {
+      "pick_place": 0.3,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "pilot_film_sources": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.35,
+     "ci95": [
+      0.18118954786794464,
+      0.5671494897805354
+     ],
+     "failures": {
+      "no_grasp": 11,
+      "wrong_object": 1,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.7,
+      "stack": 0.0
+     }
+    },
+    "lighting_shift": {
+     "n": 20,
+     "success_rate": 0.3,
+     "ci95": [
+      0.14547527396899385,
+      0.5189767762289793
+     ],
+     "failures": {
+      "timeout": 4,
+      "no_grasp": 10
+     },
+     "by_task": {
+      "pick_place": 0.6,
+      "stack": 0.0
+     }
+    },
+    "camera_shift": {
+     "n": 20,
+     "success_rate": 0.4,
+     "ci95": [
+      0.21880396741419272,
+      0.613422057684794
+     ],
+     "failures": {
+      "no_grasp": 10,
+      "timeout": 1,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.7,
+      "stack": 0.1
+     }
+    }
+   }
+  },
+  "src_synthetic_sources": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.2,
+     "ci95": [
+      0.0806563532712,
+      0.41602172202575993
+     ],
+     "failures": {
+      "no_grasp": 15,
+      "wrong_object": 1
+     },
+     "by_task": {
+      "pick_place": 0.4,
+      "stack": 0.0
+     }
+    },
+    "lighting_shift": {
+     "n": 20,
+     "success_rate": 0.15,
+     "ci95": [
+      0.05236779195949584,
+      0.36042329588695743
+     ],
+     "failures": {
+      "no_grasp": 16,
+      "timeout": 1
+     },
+     "by_task": {
+      "pick_place": 0.3,
+      "stack": 0.0
+     }
+    },
+    "camera_shift": {
+     "n": 20,
+     "success_rate": 0.15,
+     "ci95": [
+      0.05236779195949584,
+      0.36042329588695743
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "dropped": 2,
+      "misplaced": 1
+     },
+     "by_task": {
+      "pick_place": 0.3,
+      "stack": 0.0
+     }
+    }
+   }
+  },
+  "src_teleop_sources": {
+   "conditions": {
+    "obs_latency_steps": 0,
+    "image_noise_std": 2.0,
+    "action_delay_steps": 0
+   },
+   "splits": {
+    "in_distribution": {
+     "n": 20,
+     "success_rate": 0.15,
+     "ci95": [
+      0.05236779195949584,
+      0.36042329588695743
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "wrong_object": 2,
+      "dropped": 1
+     },
+     "by_task": {
+      "pick_place": 0.3,
+      "stack": 0.0
+     }
+    },
+    "lighting_shift": {
+     "n": 20,
+     "success_rate": 0.1,
+     "ci95": [
+      0.027865893984153206,
+      0.30103820641179335
+     ],
+     "failures": {
+      "no_grasp": 13,
+      "dropped": 2,
+      "timeout": 1,
+      "wrong_object": 2
+     },
+     "by_task": {
+      "pick_place": 0.2,
+      "stack": 0.0
+     }
+    },
+    "camera_shift": {
+     "n": 20,
+     "success_rate": 0.2,
+     "ci95": [
+      0.0806563532712,
+      0.41602172202575993
+     ],
+     "failures": {
+      "no_grasp": 14,
+      "timeout": 2
+     },
+     "by_task": {
+      "pick_place": 0.4,
+      "stack": 0.0
+     }
+    }
+   }
+  }
+ },
+ "rl": {
+  "dynamics": {
+   "nominal": {
+    "kp_scale": [
+     1.0,
+     1.0
+    ],
+    "damping_scale": [
+     1.0,
+     1.0
+    ],
+    "payload_kg": [
+     0.0,
+     0.0
+    ],
+    "obs_noise": 0.0,
+    "latency_steps": [
+     0,
+     0
+    ]
+   },
+   "randomized": {
+    "kp_scale": [
+     0.6,
+     1.4
+    ],
+    "damping_scale": [
+     0.5,
+     2.0
+    ],
+    "payload_kg": [
+     0.0,
+     1.5
+    ],
+    "obs_noise": 0.01,
+    "latency_steps": [
+     0,
+     2
+    ]
+   },
+   "target": {
+    "kp_scale": [
+     0.5,
+     0.65
+    ],
+    "damping_scale": [
+     1.5,
+     2.5
+    ],
+    "payload_kg": [
+     1.0,
+     1.6
+    ],
+    "obs_noise": 0.01,
+    "latency_steps": [
+     2,
+     2
+    ]
+   }
+  },
+  "results": {
+   "ppo_nominal": {
+    "train_steps": 400000,
+    "eval_nominal": {
+     "episodes": 200,
+     "successes": 200,
+     "ci95": [
+      0.9811539940816791,
+      1.0
+     ],
+     "success_rate": 1.0,
+     "final_pos_err_mm_median": 4.072741679258704,
+     "steps_mean": 12.41
+    },
+    "eval_randomized": {
+     "episodes": 200,
+     "successes": 76,
+     "ci95": [
+      0.3155889366123922,
+      0.4489341048080049
+     ],
+     "success_rate": 0.38,
+     "final_pos_err_mm_median": 64.46850345753622,
+     "steps_mean": 42.14
+    },
+    "eval_target": {
+     "episodes": 200,
+     "successes": 0,
+     "ci95": [
+      0.0,
+      0.018846005918320894
+     ],
+     "success_rate": 0.0,
+     "final_pos_err_mm_median": 252.35053138276044,
+     "steps_mean": 60.0
+    },
+    "onnx": {
+     "max_abs_diff": 2.980232238769531e-07,
+     "onnx_mean_ms": 0.01985289999993256
+    }
+   },
+   "ppo_domain_randomized": {
+    "train_steps": 1000000,
+    "eval_nominal": {
+     "episodes": 200,
+     "successes": 200,
+     "ci95": [
+      0.9811539940816791,
+      1.0
+     ],
+     "success_rate": 1.0,
+     "final_pos_err_mm_median": 6.097100492597967,
+     "steps_mean": 14.23
+    },
+    "eval_randomized": {
+     "episodes": 200,
+     "successes": 200,
+     "ci95": [
+      0.9811539940816791,
+      1.0
+     ],
+     "success_rate": 1.0,
+     "final_pos_err_mm_median": 6.9513595427659665,
+     "steps_mean": 16.62
+    },
+    "eval_target": {
+     "episodes": 200,
+     "successes": 200,
+     "ci95": [
+      0.9811539940816791,
+      1.0
+     ],
+     "success_rate": 1.0,
+     "final_pos_err_mm_median": 7.581384878876793,
+     "steps_mean": 20.025
+    },
+    "onnx": {
+     "max_abs_diff": 2.980232238769531e-07,
+     "onnx_mean_ms": 0.040251539999189845
+    }
+   }
+  }
+ },
+ "codec": {
+  "camera": "front",
+  "resolution": [
+   160,
+   120
+  ],
+  "episodes": 12,
+  "frames": 1361,
+  "results": [
+   {
+    "setting": "raw (uncompressed)",
+    "bytes_per_frame": 57600,
+    "ratio_vs_raw": 1.0,
+    "psnr_mean_db": null,
+    "psnr_p1_db": null,
+    "encode_fps": null,
+    "decode_fps": null,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "JPEG quality 90 per frame (as in the bags)",
+    "bytes_per_frame": 4067,
+    "ratio_vs_raw": 14.2,
+    "psnr_mean_db": 50.06,
+    "psnr_p1_db": 48.09,
+    "encode_fps": 5264,
+    "decode_fps": 3779,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "FFV1 lossless",
+    "bytes_per_frame": 12704,
+    "ratio_vs_raw": 4.5,
+    "psnr_mean_db": 99.0,
+    "psnr_p1_db": 99.0,
+    "encode_fps": 803,
+    "decode_fps": 821,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "H.264 CRF 23",
+    "bytes_per_frame": 266,
+    "ratio_vs_raw": 216.5,
+    "psnr_mean_db": 37.73,
+    "psnr_p1_db": 36.47,
+    "encode_fps": 575,
+    "decode_fps": 4222,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "H.264 CRF 30",
+    "bytes_per_frame": 122,
+    "ratio_vs_raw": 470.8,
+    "psnr_mean_db": 34.68,
+    "psnr_p1_db": 33.4,
+    "encode_fps": 751,
+    "decode_fps": 4550,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "H.264 CRF 23, GOP 2",
+    "bytes_per_frame": 837,
+    "ratio_vs_raw": 68.8,
+    "psnr_mean_db": 37.76,
+    "psnr_p1_db": 36.03,
+    "encode_fps": 761,
+    "decode_fps": 2713,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "HEVC CRF 28",
+    "bytes_per_frame": 172,
+    "ratio_vs_raw": 334.0,
+    "psnr_mean_db": 35.8,
+    "psnr_p1_db": 33.51,
+    "encode_fps": 413,
+    "decode_fps": 3840,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "AV1 CRF 30, GOP 2 (release setting)",
+    "bytes_per_frame": 829,
+    "ratio_vs_raw": 69.5,
+    "psnr_mean_db": 38.77,
+    "psnr_p1_db": 36.58,
+    "encode_fps": 487,
+    "decode_fps": 4620,
+    "frame_count_exact": true
+   },
+   {
+    "setting": "AV1 CRF 40, GOP 2",
+    "bytes_per_frame": 560,
+    "ratio_vs_raw": 102.9,
+    "psnr_mean_db": 37.0,
+    "psnr_p1_db": 34.15,
+    "encode_fps": 545,
+    "decode_fps": 5036,
+    "frame_count_exact": true
+   }
+  ]
+ },
+ "perception": {
+  "objects": 425,
+  "detected": 425,
+  "xy_err_mm": {
+   "median": 7.7,
+   "p95": 10.0,
+   "max": 11.3
+  },
+  "by_split": {
+   "in_distribution": {
+    "detected": 125,
+    "objects": 125,
+    "xy_median_mm": 7.7
+   },
+   "lighting_shift": {
+    "detected": 125,
+    "objects": 125,
+    "xy_median_mm": 7.8
+   },
+   "two_distractors": {
+    "detected": 175,
+    "objects": 175,
+    "xy_median_mm": 7.7
+   }
+  }
+ },
+ "finetune_data": {
+  "dataset_version": "v-1994eee9ac",
+  "episodes": 47,
+  "frames": 5702,
+  "splits": {
+   "train": "0:43",
+   "val": "43:47"
+  },
+  "by_source": {
+   "synthetic": 47
+  },
+  "video_codec": "libsvtav1",
+  "crf": 30,
+  "export_seconds": 109.0,
+  "lerobot_codebase_version": "v3.0"
+ },
+ "deploy": {
+  "split": "in_distribution",
+  "episodes": 20,
+  "success_rate": 0.5,
+  "ci95": [
+   0.2992949144298199,
+   0.7007050855701801
+  ],
+  "failures": {
+   "timeout": 1,
+   "wrong_object": 1,
+   "no_grasp": 4,
+   "misplaced": 3,
+   "dropped": 1
+  },
+  "runtime": {
+   "ticks": 4204,
+   "acted": 4149,
+   "stale": 52,
+   "skewed": 3,
+   "decode_errors": 5,
+   "clock_offsets_now": {
+    "front": 0.0191,
+    "wrist": 0.2992
+   },
+   "e2e_ms_p50": 33.02914799860446,
+   "e2e_ms_p95": 89.38650420168409,
+   "e2e_ms_max": 571.4325040025869,
+   "infer_ms_p50": 25.922412998625077,
+   "infer_ms_p95": 73.68448659981368,
+   "infer_ms_max": 569.2324780029594
+  },
+  "fault_profile": "configs/faults/realistic.yaml"
+ },
+ "agent": {
+  "episodes": 10,
+  "step1_success": 1.0,
+  "task_success": 0.3,
+  "task_ci95": [
+   0.10778928748621183,
+   0.6032267800204347
+  ],
+  "retries": 8,
+  "postcondition_agreement": 0.95,
+  "rows": [
+   {
+    "episode_index": 0,
+    "instruction": "put the red cube in the bin, then stack the yellow cube on the green cube",
+    "steps_true": [
+     true,
+     true
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the red cube in the bin",
+      "result": "success",
+      "ticks": 96,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the green cube",
+      "result": "success",
+      "ticks": 113,
+      "retries": 0
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "red"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "yellow",
+       "support": "green"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 1,
+    "instruction": "put the yellow cube in the bin, then stack the blue cube on the red cube",
+    "steps_true": [
+     true,
+     true
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the yellow cube in the bin",
+      "result": "success",
+      "ticks": 108,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the red cube",
+      "result": "success",
+      "ticks": 92,
+      "retries": 0
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "yellow"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "blue",
+       "support": "red"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 2,
+    "instruction": "put the red cube in the bin, then stack the yellow cube on the blue cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the red cube in the bin",
+      "result": "success",
+      "ticks": 104,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the blue cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the blue cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "red"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "yellow",
+       "support": "blue"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 3,
+    "instruction": "put the green cube in the bin, then stack the blue cube on the red cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the green cube in the bin",
+      "result": "success",
+      "ticks": 103,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the red cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the red cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "green"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "blue",
+       "support": "red"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 4,
+    "instruction": "put the red cube in the bin, then stack the yellow cube on the blue cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the red cube in the bin",
+      "result": "success",
+      "ticks": 117,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the blue cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the blue cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "red"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "yellow",
+       "support": "blue"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 5,
+    "instruction": "put the green cube in the bin, then stack the red cube on the blue cube",
+    "steps_true": [
+     true,
+     true
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the green cube in the bin",
+      "result": "success",
+      "ticks": 99,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the red cube on the blue cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the red cube on the blue cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "green"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "red",
+       "support": "blue"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 6,
+    "instruction": "put the green cube in the bin, then stack the blue cube on the yellow cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the green cube in the bin",
+      "result": "success",
+      "ticks": 101,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the yellow cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the yellow cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "green"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "blue",
+       "support": "yellow"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 7,
+    "instruction": "put the green cube in the bin, then stack the blue cube on the yellow cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the green cube in the bin",
+      "result": "success",
+      "ticks": 96,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the yellow cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the blue cube on the yellow cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "green"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "blue",
+       "support": "yellow"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 8,
+    "instruction": "put the blue cube in the bin, then stack the green cube on the red cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the blue cube in the bin",
+      "result": "success",
+      "ticks": 119,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the green cube on the red cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the green cube on the red cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "blue"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "green",
+       "support": "red"
+      }
+     }
+    ],
+    "plan_error": null
+   },
+   {
+    "episode_index": 9,
+    "instruction": "put the blue cube in the bin, then stack the yellow cube on the green cube",
+    "steps_true": [
+     true,
+     false
+    ],
+    "executor": [
+     {
+      "step": 0,
+      "instruction": "put the blue cube in the bin",
+      "result": "success",
+      "ticks": 104,
+      "retries": 0
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the green cube",
+      "result": "retry"
+     },
+     {
+      "step": 1,
+      "instruction": "stack the yellow cube on the green cube",
+      "result": "failed",
+      "ticks": 240,
+      "retries": 1
+     }
+    ],
+    "plan": [
+     {
+      "skill": "pick_place",
+      "args": {
+       "object": "blue"
+      }
+     },
+     {
+      "skill": "stack",
+      "args": {
+       "object": "yellow",
+       "support": "green"
+      }
+     }
+    ],
+    "plan_error": null
+   }
+  ]
+ },
+ "release_check": {
+  "candidate": "runs/act_main/best",
+  "policy": {
+   "run_name": "act_main",
+   "config_hash": "628a4f7e2a",
+   "dataset": "data/release/rls_panda",
+   "dataset_version": "v-8d8fc45d7b",
+   "git_sha": "unknown",
+   "train_episodes": 409,
+   "train_frames": 48207,
+   "sources": null,
+   "finetune": "full",
+   "init_from": null,
+   "params": {
+    "total": 2763336,
+    "trainable": 2763336
+   },
+   "step": 5500,
+   "val_loss": 0.21666909381747246
+  },
+  "mode": "full",
+  "pass": true,
+  "checks": [
+   {
+    "check": "data.drop_rate_max_abs_error",
+    "value": 0.0008,
+    "pass": true,
+    "threshold": "< 0.02"
+   },
+   {
+    "check": "data.corrupt_frames_missed",
+    "value": 0,
+    "pass": true,
+    "threshold": "== 0"
+   },
+   {
+    "check": "data.wrist_clock_offset_error_ms",
+    "value": 8.0,
+    "pass": true,
+    "threshold": "< 25 ms"
+   },
+   {
+    "check": "data.healthy_episode_fraction",
+    "value": 0.833,
+    "pass": true,
+    "threshold": "reported (realistic profile fails ~13% of episodes by design)"
+   },
+   {
+    "check": "export.onnx_max_abs_diff",
+    "value": 6.020069122314453e-06,
+    "pass": true,
+    "threshold": "< 1e-4"
+   },
+   {
+    "check": "export.onnx_p95_ms",
+    "value": 33.5,
+    "pass": true,
+    "threshold": "< 50 ms (15 Hz control budget is 66 ms)"
+   },
+   {
+    "check": "closed_loop.in_distribution",
+    "value": 0.433,
+    "pass": true,
+    "threshold": "baseline 13/30; fail if drop >= 0.10 and p < 0.05 (drop +0.00, p 0.500)"
+   },
+   {
+    "check": "closed_loop.position_ood",
+    "value": 0.5,
+    "pass": true,
+    "threshold": "baseline 15/30; fail if drop >= 0.10 and p < 0.05 (drop +0.00, p 0.500)"
+   }
+  ],
+  "measured": {
+   "in_distribution": {
+    "k": 13,
+    "n": 30
+   },
+   "position_ood": {
+    "k": 15,
+    "n": 30
+   }
+  },
+  "minutes": 6.8
+ }
 }

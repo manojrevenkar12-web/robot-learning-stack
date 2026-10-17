@@ -19,12 +19,12 @@
   "val_loss": 0.21666909381747246
  },
  "mode": "full",
- "pass": false,
+ "pass": true,
  "checks": [
   {
    "check": "data.drop_rate_max_abs_error",
-   "value": 0.211,
-   "pass": false,
+   "value": 0.0008,
+   "pass": true,
    "threshold": "< 0.02"
   },
   {
@@ -35,15 +35,15 @@
   },
   {
    "check": "data.wrist_clock_offset_error_ms",
-   "value": 7.7,
+   "value": 8.0,
    "pass": true,
    "threshold": "< 25 ms"
   },
   {
    "check": "data.healthy_episode_fraction",
-   "value": 0.667,
-   "pass": false,
-   "threshold": ">= 0.8"
+   "value": 0.833,
+   "pass": true,
+   "threshold": "reported (realistic profile fails ~13% of episodes by design)"
   },
   {
    "check": "export.onnx_max_abs_diff",
@@ -53,7 +53,7 @@
   },
   {
    "check": "export.onnx_p95_ms",
-   "value": 40.6,
+   "value": 33.5,
    "pass": true,
    "threshold": "< 50 ms (15 Hz control budget is 66 ms)"
   },
@@ -61,13 +61,13 @@
    "check": "closed_loop.in_distribution",
    "value": 0.433,
    "pass": true,
-   "threshold": "no baseline yet (recorded only)"
+   "threshold": "baseline 13/30; fail if drop >= 0.10 and p < 0.05 (drop +0.00, p 0.500)"
   },
   {
    "check": "closed_loop.position_ood",
    "value": 0.5,
    "pass": true,
-   "threshold": "no baseline yet (recorded only)"
+   "threshold": "baseline 15/30; fail if drop >= 0.10 and p < 0.05 (drop +0.00, p 0.500)"
   }
  ],
  "measured": {
@@ -80,5 +80,5 @@
    "n": 30
   }
  },
- "minutes": 12.1
+ "minutes": 6.8
 }

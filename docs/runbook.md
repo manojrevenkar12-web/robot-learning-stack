@@ -101,7 +101,8 @@ Fails on: data-health errors against injected truth, ONNX parity > 1e-4, p95 lat
 or a closed-loop regression that is both ≥ 10 points and significant (one-sided z-test,
 p < 0.05) against `configs/release/baseline.json`. `--update-baseline` after review accepts the
 candidate. The nightly workflow runs the `--quick` variant (small rebuilt dataset, short
-training).
+training). Run the gate on an otherwise idle machine: with two training jobs sharing a 2-core box,
+ONNX p95 latency rose from 34 ms to 69 ms and the gate (correctly) failed.
 
 ## Common failures
 

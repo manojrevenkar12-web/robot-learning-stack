@@ -1,0 +1,17 @@
+{
+ "bundle": "runs/act_main/best",
+ "train": {
+  "first_frame_target_error_mm_median": 9.2,
+  "first_frame_target_within_30mm": 1.0,
+  "grasp_error_mm_real": 7.6,
+  "grasp_error_mm_images_swapped": 98.2,
+  "grasp_error_mm_state_noise": 20.0
+ },
+ "val": {
+  "first_frame_target_error_mm_median": 17.8,
+  "first_frame_target_within_30mm": 0.75,
+  "grasp_error_mm_real": 14.1,
+  "grasp_error_mm_images_swapped": 109.4,
+  "grasp_error_mm_state_noise": 23.2
+ }
+}

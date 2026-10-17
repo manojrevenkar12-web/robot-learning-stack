@@ -19,3 +19,4 @@ mlruns/
 /reports_*.log
 /reports/release/*/work/
 /reports/**/session/logs/
+!/reports/bench/act_main/videos/
