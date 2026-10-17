@@ -131,8 +131,13 @@ class ChunkDataset:
             "tokens": torch.from_numpy(self.tokens[rows]),
             "action": torch.from_numpy(n.norm_action(self.action[offs])),
             "action_valid": torch.from_numpy(valid),
-            **({"aux_xy": torch.from_numpy(self.aux_xy[rows]), "aux_valid": torch.from_numpy(self.aux_valid[rows])} if self.aux_xy is not None else {}),
+            **self._aux(rows),
         }
+
+    def _aux(self, rows: np.ndarray) -> dict[str, torch.Tensor]:
+        if self.aux_xy is None or self.aux_valid is None:
+            return {}
+        return {"aux_xy": torch.from_numpy(self.aux_xy[rows]), "aux_valid": torch.from_numpy(self.aux_valid[rows])}
 
     def sample(self, batch_size: int, rng: np.random.Generator) -> dict[str, torch.Tensor]:
         return self.batch(rng.integers(0, len(self), batch_size))

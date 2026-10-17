@@ -106,6 +106,8 @@ class ConvEncoder(nn.Module):
     stages, GroupNorm throughout.
     """
 
+    grid: torch.Tensor  # keypoint coordinate grid (buffer), only with keypoints > 0
+
     def __init__(self, d: int, in_hw: tuple[int, int], width: int = 24, keypoints: int = 0) -> None:
         super().__init__()
         self.keypoints = keypoints

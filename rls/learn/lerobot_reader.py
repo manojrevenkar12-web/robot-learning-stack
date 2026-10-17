@@ -83,6 +83,7 @@ def load(root: Path, video_keys: list[str] | None = None, cache: bool = True) ->
             continue
         h, w, _ = info["features"][key]["shape"]
         shape = (len(frames), h, w, 3)
+        out: np.ndarray
         if cache:
             cache_path.parent.mkdir(exist_ok=True)
             tmp = cache_path.with_suffix(f".{os.getpid()}.tmp.npy")
@@ -98,7 +99,8 @@ def load(root: Path, video_keys: list[str] | None = None, cache: bool = True) ->
         for (ci, fi), spans in files.items():
             _decode_into(root / info["video_path"].format(video_key=key, chunk_index=ci, file_index=fi), out, spans)
         if cache:
-            out.flush()
+            if isinstance(out, np.memmap):
+                out.flush()
             del out
             os.replace(tmp, cache_path)  # atomic: other processes see no cache or a complete one
             images[key] = np.load(cache_path, mmap_mode="r")

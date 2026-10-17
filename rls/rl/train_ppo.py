@@ -15,6 +15,7 @@ import json
 import time
 from dataclasses import asdict
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import torch
@@ -25,7 +26,7 @@ from rls.learn.benchmark import wilson
 from rls.rl.reach_env import NOMINAL, RANDOMIZED, TARGET, Dynamics, PandaReachEnv, make
 
 
-def evaluate(policy_fn, dynamics: Dynamics, episodes: int = 100, seed: int = 10_000) -> dict[str, float]:
+def evaluate(policy_fn, dynamics: Dynamics, episodes: int = 100, seed: int = 10_000) -> dict[str, Any]:
     env = PandaReachEnv(dynamics)
     succ, perr, steps = [], [], []
     for i in range(episodes):
