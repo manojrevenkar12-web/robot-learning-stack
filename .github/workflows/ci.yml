@@ -12,10 +12,10 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12", cache: pip }
       - run: sudo apt-get update && sudo apt-get install -y libosmesa6 ffmpeg
-      - run: pip install --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
+      - run: pip install --extra-index-url https://download.pytorch.org/whl/cpu -c constraints/ci.txt -e ".[dev]"
       - run: ruff check . && ruff format --check .
       - run: mypy
-      - run: pytest -m "not ros and not slow"
+      - run: pytest -rA -m "not ros and not slow"
 
   ros-e2e:
     # record over ROS 2 with injected sensor faults -> ingest -> health checks vs ground truth
@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: apt-get update && apt-get install -y python3-pip libosmesa6 ffmpeg build-essential cmake ros-jazzy-rosbag2-storage-mcap ros-jazzy-diagnostic-msgs
-      - run: pip3 install --ignore-installed --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
+      - run: pip3 install --ignore-installed --extra-index-url https://download.pytorch.org/whl/cpu -c constraints/ci.txt -e ".[dev]"
       - name: build the C++ sync monitor (rclcpp)
         shell: bash
         run: |
@@ -33,4 +33,5 @@ jobs:
           cmake -S cpp/rls_sync_monitor -B cpp/rls_sync_monitor/build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=cpp/rls_sync_monitor/install -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
           cmake --build cpp/rls_sync_monitor/build && cmake --install cpp/rls_sync_monitor/build
       - shell: bash
-        run: source /opt/ros/jazzy/setup.bash && pytest -m ros tests/test_ros_pipeline.py tests/test_ros_deploy.py
+        env: { RLS_REQUIRE_ROS: "1" }  # fail instead of skipping if rclpy is missing
+        run: source /opt/ros/jazzy/setup.bash && pytest -rA -m ros tests/test_ros_pipeline.py tests/test_ros_deploy.py

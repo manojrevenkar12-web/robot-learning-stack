@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import os
 
 import pytest
 
@@ -15,6 +16,8 @@ def pytest_configure(config: pytest.Config) -> None:
 def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
     if HAS_ROS:
         return
+    if os.environ.get("RLS_REQUIRE_ROS"):
+        raise pytest.UsageError("RLS_REQUIRE_ROS is set but rclpy is not importable (source /opt/ros/jazzy/setup.bash)")
     skip = pytest.mark.skip(reason="ROS 2 not available")
     for item in items:
         if "ros" in item.keywords:
