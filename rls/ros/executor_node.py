@@ -27,7 +27,7 @@ from tf2_msgs.msg import TFMessage
 from rls.agent.planner import PlanError, Step, default_planner, plan_to_json
 from rls.data.calib import quat_xyzw_to_mat
 from rls.perception.cubes import detect, in_bin, stacked
-from rls.ros.driver import ARM_JOINTS, to_time
+from rls.ros.driver import ARM_JOINTS, from_time, to_time
 from rls.sim.scene import HOME_Q
 
 BIN_XY = (0.45, -0.28)  # workcell fixture position (cell configuration, not ground truth)
@@ -62,6 +62,7 @@ class ExecutorNode(Node):
         self.tf: tuple[np.ndarray, np.ndarray] | None = None
         self.rgb: np.ndarray | None = None
         self.depth: np.ndarray | None = None
+        self.t_min = -1.0  # frames stamped before this belong to the previous episode
         self.q: np.ndarray | None = None
         self.reports: list[dict[str, Any]] = []
         self.phase = "idle"
@@ -73,12 +74,16 @@ class ExecutorNode(Node):
 
         from PIL import Image as PILImage
 
+        if from_time(m.header.stamp) < self.t_min:
+            return
         try:
             self.rgb = np.asarray(PILImage.open(io.BytesIO(bytes(m.data))).convert("RGB"))
         except Exception:
             pass
 
     def _on_depth(self, m: Image) -> None:
+        if from_time(m.header.stamp) < self.t_min:
+            return
         self.depth = np.frombuffer(bytes(m.data), np.uint16).reshape(m.height, m.width)
 
     def _on_tf(self, m: TFMessage) -> None:
@@ -111,6 +116,10 @@ class ExecutorNode(Node):
     def _on_event(self, m: String) -> None:
         ev = json.loads(m.data)
         if ev["event"] == "start":
+            # never plan or check postconditions on the previous scene: drop frames older than this episode
+            # (episodes are 1 s apart; 0.5 s of margin covers a camera clock running slightly behind)
+            self.rgb = self.depth = None
+            self.t_min = float(ev["t"]) - 0.5
             self.goal = ev["spec"]["instruction"]
             self.phase = "plan"
             self.report: dict[str, Any] = {"episode_index": ev["episode_index"], "instruction": self.goal, "steps": [], "planner": type(self.planner).__name__}

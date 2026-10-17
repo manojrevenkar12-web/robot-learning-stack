@@ -98,6 +98,7 @@ def agent_eval(
                 "steps_true": truth,
                 "executor": rep.get("steps", []),
                 "plan": rep.get("plan"),
+                "plan_error": rep.get("plan_error"),
             }
         )
     step1 = [r["steps_true"][0] for r in rows]
