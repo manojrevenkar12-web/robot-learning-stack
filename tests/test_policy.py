@@ -114,3 +114,20 @@ def test_ee_action_space_round_trip() -> None:
         p_back, _ = sp.ik.fk(back[:7])
         p_true, _ = sp.ik.fk(joint_arr[k, :7])
         assert np.linalg.norm(p_back - p_true) < 1e-3 and back[7] == joint_arr[k, 7]
+
+
+def test_lora_bundle_saves_merged_weights(tmp_path: Path) -> None:
+    """A LoRA-fine-tuned policy is saved with the adapters merged and reloads to the same outputs."""
+    torch.manual_seed(0)
+    m = Policy.build("chunk_transformer", {**SMALL, "dropout": 0.0, "augment_shift": 0}).eval()
+    add_lora(m.encoder) + add_lora(m.decoder)
+    for mod in m.modules():
+        if isinstance(mod, LoRALinear):
+            torch.nn.init.normal_(mod.lora_b, std=0.1)
+    b = _batch()
+    ref = m(b["front"], b["wrist"], b["state"], b["tokens"])
+    PolicyBundle(m, Normalizer(np.zeros(8), np.ones(8), np.zeros(8), np.ones(8)), {}).save(tmp_path / "b")
+    assert not any(k.endswith("lora_a") for k in torch.load(tmp_path / "b" / "model.pt"))
+    assert any(isinstance(x, LoRALinear) for x in m.modules())  # the live model keeps training with adapters
+    back = PolicyBundle.load(tmp_path / "b").model
+    assert torch.allclose(back(b["front"], b["wrist"], b["state"], b["tokens"]), ref, atol=1e-5)

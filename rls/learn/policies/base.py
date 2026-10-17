@@ -92,8 +92,17 @@ class PolicyBundle:
     meta: dict[str, Any]
 
     def save(self, path: Path) -> None:
+        """Bundles always hold plain weights: LoRA adapters are merged into a copy on save."""
+        import copy
+
+        from rls.learn.policies.layers import LoRALinear, merge_lora
+
         path.mkdir(parents=True, exist_ok=True)
-        torch.save(self.model.state_dict(), path / "model.pt")
+        model = self.model
+        if any(isinstance(m, LoRALinear) for m in model.modules()):
+            model = copy.deepcopy(model)
+            merge_lora(model)
+        torch.save(model.state_dict(), path / "model.pt")
         (path / "bundle.json").write_text(
             json.dumps(
                 {"policy": self.model.registry_name, "config": self.model.describe(), "normalizer": self.normalizer.to_dict(), "meta": self.meta},
@@ -106,7 +115,17 @@ class PolicyBundle:
     def load(path: Path, map_location: str = "cpu") -> PolicyBundle:
         b = json.loads((path / "bundle.json").read_text())
         model = Policy.build(b["policy"], b["config"])
-        model.load_state_dict(torch.load(path / "model.pt", map_location=map_location))
+        state = torch.load(path / "model.pt", map_location=map_location)
+        if any(k.endswith("lora_a") for k in state):  # bundle written before adapters were merged on save
+            from rls.learn.policies.layers import add_lora, merge_lora
+
+            rank = next(v.shape[0] for k, v in state.items() if k.endswith("lora_a"))
+            add_lora(model.encoder, rank=rank)  # type: ignore[arg-type]
+            add_lora(model.decoder, rank=rank)  # type: ignore[arg-type]
+            model.load_state_dict(state)
+            merge_lora(model)
+        else:
+            model.load_state_dict(state)
         model.eval()
         return PolicyBundle(model, Normalizer.from_dict(b["normalizer"]), b["meta"])
 
