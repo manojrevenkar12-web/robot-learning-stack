@@ -55,6 +55,7 @@ class FaultProfile:
     @staticmethod
     def load(path: Path) -> FaultProfile:
         raw = yaml.safe_load(Path(path).read_text())
+
         def fields(v: dict[str, Any]) -> dict[str, Any]:
             return {kk: tuple(vv) if isinstance(vv, list) else vv for kk, vv in v.items()}
 

@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: apt-get update && apt-get install -y python3-pip libosmesa6 ffmpeg build-essential cmake ros-jazzy-rosbag2-storage-mcap ros-jazzy-diagnostic-msgs
-      - run: pip3 install --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
+      - run: pip3 install --ignore-installed --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
       - name: build the C++ sync monitor (rclcpp)
         shell: bash
         run: |

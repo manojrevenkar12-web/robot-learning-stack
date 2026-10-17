@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: apt-get update && apt-get install -y python3-pip python3-venv libosmesa6 ffmpeg ros-jazzy-rosbag2-storage-mcap
-      - run: pip3 install --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
+      - run: pip3 install --ignore-installed --extra-index-url https://download.pytorch.org/whl/cpu -e ".[dev]"
       - run: |
           python3 -m venv /opt/lerobot-venv
           /opt/lerobot-venv/bin/pip install --extra-index-url https://download.pytorch.org/whl/cpu "lerobot[dataset]==0.6.1" pyyaml h5py

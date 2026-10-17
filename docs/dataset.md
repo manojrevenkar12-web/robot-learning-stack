@@ -87,6 +87,7 @@ Load with LeRobot:
 
 ```python
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
+
 ds = LeRobotDataset("local/rls_panda", root="data/release/rls_panda")
 ```
 
@@ -94,5 +95,6 @@ or with the training stack's reader (no LeRobot dependency; tested pixel-exact a
 
 ```python
 from rls.learn.lerobot_reader import load
+
 data = load("data/release/rls_panda")
 ```

@@ -14,7 +14,7 @@ SHELL ["/bin/bash", "-c"]
 WORKDIR /opt/rls
 COPY pyproject.toml README.md ./
 COPY rls ./rls
-RUN pip3 install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu ".[rl,tracking]"
+RUN pip3 install --no-cache-dir --ignore-installed --extra-index-url https://download.pytorch.org/whl/cpu ".[rl,tracking]"
 COPY configs ./configs
 COPY scripts ./scripts
 COPY tests ./tests

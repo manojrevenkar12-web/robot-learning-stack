@@ -251,7 +251,14 @@ def main() -> None:
     ap.add_argument("--lr", type=float)
     a = ap.parse_args()
     cfg = TrainConfig.load(
-        a.config, steps=a.steps, run_name=a.run_name, dataset=a.dataset, max_train_episodes=a.max_train_episodes, init_from=a.init_from, finetune=a.finetune, lr=a.lr
+        a.config,
+        steps=a.steps,
+        run_name=a.run_name,
+        dataset=a.dataset,
+        max_train_episodes=a.max_train_episodes,
+        init_from=a.init_from,
+        finetune=a.finetune,
+        lr=a.lr,
     )
     print(json.dumps(train(cfg, resume=a.resume), indent=1, default=str))
 
