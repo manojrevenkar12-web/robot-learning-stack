@@ -1,0 +1,17 @@
+{
+ "full": {
+  "candidate": "runs/act_main/best",
+  "run_name": "act_main",
+  "dataset_version": "v-8d8fc45d7b",
+  "splits": {
+   "in_distribution": {
+    "k": 13,
+    "n": 30
+   },
+   "position_ood": {
+    "k": 15,
+    "n": 30
+   }
+  }
+ }
+}

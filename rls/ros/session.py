@@ -157,7 +157,20 @@ def record_session(
     }
     if episode_specs:
         params["episode_specs"] = str(episode_specs)
-    if not record:
+    monitored = monitor and SYNC_MONITOR.exists()
+    if record:
+        # wait until the recorder itself has subscribed: count every other subscriber we started
+        base = 1 + int(monitored)
+        pol, exe = int(operator in ("policy", "agent")), int(operator == "agent")
+        counts = {
+            "/cam_front/color/image_raw/compressed": base + pol + exe,
+            "/cam_wrist/color/image_raw/compressed": base + pol,
+            "/cam_front/depth/image_raw": base + exe,
+            "/wrist_ft": base,
+            "/sim/privileged": 1,
+        }
+        params["wait_for_topics"] = ",".join(f"{t}:{n}" for t, n in counts.items())
+    else:
         params["wait_for_topics"] = "/sim/privileged"
     params.update(driver_params or {})
     t0 = time.time()

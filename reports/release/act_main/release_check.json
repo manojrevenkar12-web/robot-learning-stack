@@ -1,0 +1,84 @@
+{
+ "candidate": "runs/act_main/best",
+ "policy": {
+  "run_name": "act_main",
+  "config_hash": "628a4f7e2a",
+  "dataset": "data/release/rls_panda",
+  "dataset_version": "v-8d8fc45d7b",
+  "git_sha": "unknown",
+  "train_episodes": 409,
+  "train_frames": 48207,
+  "sources": null,
+  "finetune": "full",
+  "init_from": null,
+  "params": {
+   "total": 2763336,
+   "trainable": 2763336
+  },
+  "step": 5500,
+  "val_loss": 0.21666909381747246
+ },
+ "mode": "full",
+ "pass": false,
+ "checks": [
+  {
+   "check": "data.drop_rate_max_abs_error",
+   "value": 0.211,
+   "pass": false,
+   "threshold": "< 0.02"
+  },
+  {
+   "check": "data.corrupt_frames_missed",
+   "value": 0,
+   "pass": true,
+   "threshold": "== 0"
+  },
+  {
+   "check": "data.wrist_clock_offset_error_ms",
+   "value": 7.7,
+   "pass": true,
+   "threshold": "< 25 ms"
+  },
+  {
+   "check": "data.healthy_episode_fraction",
+   "value": 0.667,
+   "pass": false,
+   "threshold": ">= 0.8"
+  },
+  {
+   "check": "export.onnx_max_abs_diff",
+   "value": 6.020069122314453e-06,
+   "pass": true,
+   "threshold": "< 1e-4"
+  },
+  {
+   "check": "export.onnx_p95_ms",
+   "value": 40.6,
+   "pass": true,
+   "threshold": "< 50 ms (15 Hz control budget is 66 ms)"
+  },
+  {
+   "check": "closed_loop.in_distribution",
+   "value": 0.433,
+   "pass": true,
+   "threshold": "no baseline yet (recorded only)"
+  },
+  {
+   "check": "closed_loop.position_ood",
+   "value": 0.5,
+   "pass": true,
+   "threshold": "no baseline yet (recorded only)"
+  }
+ ],
+ "measured": {
+  "in_distribution": {
+   "k": 13,
+   "n": 30
+  },
+  "position_ood": {
+   "k": 15,
+   "n": 30
+  }
+ },
+ "minutes": 12.1
+}

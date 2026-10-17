@@ -201,11 +201,20 @@ class SimDriver(Node):
 
     # ------------------------------------------------------------ main loop
     def wait_for_peers(self) -> None:
-        """Block until every listed topic has a subscriber (recorder, operator, policy)."""
-        topics = [t for t in str(self.get_parameter("wait_for_topics").value).split(",") if t]
+        """Block until every listed topic has enough subscribers (recorder, monitor, operator, policy).
+
+        Entries are ``topic`` or ``topic:count``. Counts matter: with the live monitor running, "someone
+        subscribes to the camera" is true before rosbag2 has subscribed, and the first frames of the
+        session would be missing from the bag.
+        """
+        want: dict[str, int] = {}
+        for entry in str(self.get_parameter("wait_for_topics").value).split(","):
+            if entry:
+                topic, _, n = entry.partition(":")
+                want[topic] = int(n) if n else 1
         deadline = time.monotonic() + float(self.get_parameter("wait_timeout_s").value)
         while time.monotonic() < deadline:
-            missing = [t for t in topics if self.count_subscribers(t) == 0]
+            missing = [t for t, n in want.items() if self.count_subscribers(t) < n]
             if not missing:
                 return
             # rosbag2 with --use-sim-time only starts subscribing once /clock ticks
